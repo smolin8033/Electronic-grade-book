@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Student, Class
+from .models import Student, Class, TypeOfClass
 
 
 class StudentAdmin(admin.ModelAdmin):
