@@ -44,4 +44,12 @@ class Teacher(models.Model):
     gender = models.CharField(max_length=20)
 
 
+class Discipline(models.Model):
+    name = models.CharField(max_length=40)
+    type = models.CharField(max_length=40)
+    class_id = models.ForeignKey(Class, on_delete=models.DO_NOTHING, default="")
+    teacher_id = models.ForeignKey(Teacher, on_delete=models.DO_NOTHING, default="")
+    hours = models.IntegerField()
+
+
 # Create your models here.
