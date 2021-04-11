@@ -1,10 +1,14 @@
 from django.db import models
 
 
+class TypeOfClass(models.Model):
+    type_of_class = models.CharField(max_length=50)
+
+
 class Class(models.Model):
     group = models.CharField(max_length=30)
     class_number = models.IntegerField()
-    # type_of_class = models.ForeignKey(TypeOfClass)
+    type_of_class = models.ForeignKey(TypeOfClass, on_delete=models.DO_NOTHING, default="")
 
 
 class Student(models.Model):
@@ -13,7 +17,7 @@ class Student(models.Model):
     family_name = models.CharField(max_length=50)
     address = models.CharField(max_length=40)
     birthday = models.DateField()
-    class_id = models.ForeignKey(Class, on_delete= models.DO_NOTHING, default="")
+    class_id = models.ForeignKey(Class, on_delete=models.DO_NOTHING, default="")
 
     def get_full_name(self):
         return "%s %s %s" % (self.first_name, self.second_name, self.family_name)
