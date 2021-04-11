@@ -18,4 +18,5 @@ class TeacherAdmin(admin.ModelAdmin):
 admin.site.register(Student, StudentAdmin)
 admin.site.register(Class, ClassAdmin)
 admin.site.register(TypeOfClass)
+admin.site.register(Teacher, TeacherAdmin)
 # Register your models here.
