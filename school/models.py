@@ -13,6 +13,10 @@ class Class(models.Model):
     class_number = models.IntegerField()
     type_of_class = models.ForeignKey(TypeOfClass, on_delete=models.DO_NOTHING, default="")
 
+    def __str__(self):
+        return "%s%s" % \
+               (self.class_number, self.group)
+
 
 class Student(models.Model):
     first_name = models.CharField(max_length=30)
