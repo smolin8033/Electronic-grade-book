@@ -23,4 +23,5 @@ admin.site.register(Student, StudentAdmin)
 admin.site.register(Class, ClassAdmin)
 admin.site.register(TypeOfClass)
 admin.site.register(Teacher, TeacherAdmin)
+admin.site.register(Discipline, DisciplineAdmin)
 # Register your models here.
