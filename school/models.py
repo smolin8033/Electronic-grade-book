@@ -4,6 +4,9 @@ from django.db import models
 class TypeOfClass(models.Model):
     type_of_class = models.CharField(max_length=50)
 
+    def __str__(self):
+        return self.type_of_class
+
 
 class Class(models.Model):
     group = models.CharField(max_length=30)
