@@ -3,7 +3,7 @@ from .models import Student, Class, TypeOfClass, Teacher
 
 
 class StudentAdmin(admin.ModelAdmin):
-    list_display = ("first_name", "second_name", "family_name", "birthday", "address")
+    list_display = ("family_name", "first_name", "second_name", "birthday", "address")
 
 
 class ClassAdmin(admin.ModelAdmin):
@@ -11,7 +11,7 @@ class ClassAdmin(admin.ModelAdmin):
 
 
 class TeacherAdmin(admin.ModelAdmin):
-    list_display = ("first_name", "second_name", "family_name", "birthday",
+    list_display = ("family_name", "first_name", "second_name", "birthday",
                     "address", "salary", "gender")
 
 
