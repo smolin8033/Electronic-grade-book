@@ -11,6 +11,6 @@ class ClassAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Student, StudentAdmin)
-admin.site.register(Class)
+admin.site.register(Class, ClassAdmin)
 admin.site.register(TypeOfClass)
 # Register your models here.
