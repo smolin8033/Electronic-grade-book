@@ -15,6 +15,10 @@ class TeacherAdmin(admin.ModelAdmin):
                     "address", "salary", "gender")
 
 
+class DisciplineAdmin(admin.ModelAdmin):
+    list_display = ("name", "type", "hours")
+
+
 admin.site.register(Student, StudentAdmin)
 admin.site.register(Class, ClassAdmin)
 admin.site.register(TypeOfClass)
