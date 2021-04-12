@@ -21,6 +21,10 @@ class Class(models.Model):
         return "%s%s" % \
                (self.class_number, self.group)
 
+    class Meta:
+        verbose_name = "Class"
+        verbose_name_plural = "Classes"
+
 
 class Student(models.Model):
     first_name = models.CharField(max_length=30)
