@@ -7,6 +7,10 @@ class TypeOfClass(models.Model):
     def __str__(self):
         return self.type_of_class
 
+    class Meta:
+        verbose_name = "Type of class"
+        verbose_name_plural = "Types of classes"
+
 
 class Class(models.Model):
     group = models.CharField(max_length=30)
