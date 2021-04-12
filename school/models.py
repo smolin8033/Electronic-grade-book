@@ -75,4 +75,10 @@ class Curriculum(models.Model):
     discipline_id = models.ForeignKey(Discipline, on_delete=models.DO_NOTHING, default="")
 
 
+class Mark(models.Model):
+    student_id = models.ForeignKey(Student, on_delete=models.DO_NOTHING, default="")
+    final_score = models.IntegerField()
+    task_id = models.ForeignKey(Task, on_delete=models.DO_NOTHING, default="")
+
+
 # Create your models here.
