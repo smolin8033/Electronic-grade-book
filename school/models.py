@@ -55,6 +55,9 @@ class Discipline(models.Model):
     teacher_id = models.ForeignKey(Teacher, on_delete=models.DO_NOTHING, default="")
     hours = models.IntegerField()
 
+    def __str__(self):
+        return self.name
+
 
 class Task(models.Model):
     task_name = models.CharField(max_length=100)
@@ -63,6 +66,12 @@ class Task(models.Model):
     class_id = models.ForeignKey(Class, on_delete=models.DO_NOTHING, default="")
     teacher_id = models.ForeignKey(Teacher, on_delete=models.DO_NOTHING, default="")
     commentary = models.TextField()
+    discipline_id = models.ForeignKey(Discipline, on_delete=models.DO_NOTHING, default="")
+
+
+class Curriculum(models.Model):
+    teacher_id = models.ForeignKey(Teacher, on_delete=models.DO_NOTHING, default="")
+    class_id = models.ForeignKey(Class, on_delete=models.DO_NOTHING, default="")
     discipline_id = models.ForeignKey(Discipline, on_delete=models.DO_NOTHING, default="")
 
 
