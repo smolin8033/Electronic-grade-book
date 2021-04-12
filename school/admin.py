@@ -4,7 +4,8 @@ from .models import (Student, Class, TypeOfClass, Teacher,
 
 
 class StudentAdmin(admin.ModelAdmin):
-    list_display = ("family_name", "first_name", "second_name", "birthday", "address")
+    list_display = ("family_name", "first_name", "second_name", "birthday",
+                    "address")
 
 
 class ClassAdmin(admin.ModelAdmin):
@@ -18,6 +19,10 @@ class TeacherAdmin(admin.ModelAdmin):
 
 class DisciplineAdmin(admin.ModelAdmin):
     list_display = ("name", "type", "hours")
+
+
+class TaskAdmin(admin.ModelAdmin):
+    list_display = ("task_name", "start_date", "end_date", "commentary")
 
 
 admin.site.register(Student, StudentAdmin)
