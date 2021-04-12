@@ -56,4 +56,14 @@ class Discipline(models.Model):
     hours = models.IntegerField()
 
 
+class Task(models.Model):
+    task_name = models.CharField(max_length=100)
+    start_date = models.DateTimeField()
+    end_date = models.DateTimeField()
+    class_id = models.ForeignKey(Class, on_delete=models.DO_NOTHING, default="")
+    teacher_id = models.ForeignKey(Teacher, on_delete=models.DO_NOTHING, default="")
+    commentary = models.TextField()
+    discipline_id = models.ForeignKey(Discipline, on_delete=models.DO_NOTHING, default="")
+
+
 # Create your models here.
