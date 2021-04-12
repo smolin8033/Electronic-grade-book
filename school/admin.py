@@ -32,4 +32,5 @@ admin.site.register(Teacher, TeacherAdmin)
 admin.site.register(Discipline, DisciplineAdmin)
 admin.site.register(Task, TaskAdmin)
 admin.site.register(Curriculum)
+admin.site.register(Mark)
 # Register your models here.
