@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import (Student, Class, TypeOfClass, Teacher,
-                     Discipline, Task, Curriculum)
+                     Discipline, Task, Curriculum, Mark)
 
 
 class StudentAdmin(admin.ModelAdmin):
