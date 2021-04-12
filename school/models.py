@@ -68,6 +68,9 @@ class Task(models.Model):
     commentary = models.TextField()
     discipline_id = models.ForeignKey(Discipline, on_delete=models.DO_NOTHING, default="")
 
+    def __str__(self):
+        return self.task_name
+
 
 class Curriculum(models.Model):
     teacher_id = models.ForeignKey(Teacher, on_delete=models.DO_NOTHING, default="")
