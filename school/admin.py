@@ -33,4 +33,5 @@ admin.site.register(Discipline, DisciplineAdmin)
 admin.site.register(Task, TaskAdmin)
 admin.site.register(Curriculum)
 admin.site.register(Mark)
+admin.site.site_header = "Our school"
 # Register your models here.
