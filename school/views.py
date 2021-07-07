@@ -6,7 +6,7 @@ def test_view(request):
     return render(request, "login.html")
 
 def student_view(request):
-    student = Student.objects.all()[0].id
+    student = Student.objects.get(id=4)
     context = {
         "student": student,
     }
