@@ -10,3 +10,4 @@ def student_view(request):
     context = {
         "student": student,
     }
+    return render(request, "student.html", context)
