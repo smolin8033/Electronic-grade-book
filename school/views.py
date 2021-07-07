@@ -7,7 +7,7 @@ def test_view(request):
 
 def student_view(request):
     st = Student.objects.get(id=4)
-    cl = Class.objects.all()[0]
+    cl = Class.objects.get(id=6)
     context = {
         "st": st,
         "cl": cl,
