@@ -20,4 +20,5 @@ from school.views import test_view, student_view,
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', test_view),
+    path('student/', student_view),
 ]
