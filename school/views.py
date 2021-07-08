@@ -13,5 +13,6 @@ def student_view(request):
     context = {
         "st": st,
         "cd": current_date,
+        "ta": ta_queryset,
     }
     return render(request, "student.html", context)
