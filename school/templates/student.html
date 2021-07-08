@@ -16,5 +16,20 @@ Today is: {{cd|date:"M. d, Y"}}
         <th>End Date</th>
         <th>Mark</th>
     </tr>
+    {% for task in ta %}
+    <tr>
+        <td>{{task.id}}</td>
+        <td>{{task.task_name}}</td>
+        <td>{{task.discipline_id}}</td>
+        <td>{{task.start_date|date:"N. d, Y"}}</td>
+        <td>{{task.end_date|date:"N. d, Y"}}</td>
+        <td>{% for mark in ma %}
+            {% if mark.task_id.task_name == task.task_name %}
+            {{mark.final_score}}
+            {% endif %}
+            {% endfor %}
+        </td>
+    </tr>
+    {% endfor %}
 </table>
 {% endblock %}
