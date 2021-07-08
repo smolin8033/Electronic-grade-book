@@ -12,7 +12,6 @@ def student_view(request):
     current_date = datetime.datetime.now()
     context = {
         "st": st,
-        "cl": cl,
         "cd": current_date,
     }
     return render(request, "student.html", context)
