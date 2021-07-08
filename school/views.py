@@ -1,6 +1,6 @@
 import datetime
 from django.shortcuts import render
-from .models import Student, Class, Task
+from .models import Student, Class, Task, Mark
 
 
 def test_view(request):
