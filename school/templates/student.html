@@ -2,7 +2,7 @@
 
 {% block content %}
 <h4>Student:{{st.get_full_name}}</h4>
-<h4>Class:{{cl}}</h4>
+<h4>Class:{{st.class_id}}</h4>
 <p>Birthday: {{st.birthday}}<br><br>
 Today is: {{cd|date:"M. d, Y"}}
 </p>
