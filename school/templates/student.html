@@ -9,7 +9,7 @@ Today is: {{cd|date:"M. d, Y"}}
 <table border="1" bgcolor="f2f3f4" align="center">
     <caption><strong>The current tasks are:</strong></caption>
     <tr>
-        <th>Id</th>
+        <th>№</th>
         <th>Task Name</th>
         <th>Discipline</th>
         <th>Start Date</th>
@@ -18,7 +18,7 @@ Today is: {{cd|date:"M. d, Y"}}
     </tr>
     {% for task in ta %}
     <tr>
-        <td>{{task.id}}</td>
+        <td>{{ forloop.counter }}</td>
         <td>{{task.task_name}}</td>
         <td>{{task.discipline_id}}</td>
         <td>{{task.start_date|date:"N. d, Y"}}</td>
