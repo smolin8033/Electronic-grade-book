@@ -8,7 +8,7 @@ def test_view(request):
 
 def student_view(request):
     st = Student.objects.get(id=4)
-    ta_queryset = Task.objects.all()
+    ta_queryset = Task.objects.order_by('end_date')
     ma_queryset = Mark.objects.all()
     current_date = datetime.datetime.now()
     context = {
