@@ -31,5 +31,8 @@ Today is: {{current_date|date:"M. d, Y"}}
         </td>
     </tr>
     {% endfor %}
-</table>
+</table><br>
+<center><form action="." method="GET">{{ form.as_p }}>
+    <input type="button" value="Show all tasks" />
+</form></center>
 {% endblock %}
