@@ -11,6 +11,8 @@ def student_view(request):
     tasks_queryset = Task.objects.order_by('end_date')[:10]
     marks_queryset = Mark.objects.all()
     current_date = datetime.datetime.now()
+    if "btnform1" in request.POST:
+        return redirect("/school/")
     context = {
         "student": student,
         "current_date": current_date,
