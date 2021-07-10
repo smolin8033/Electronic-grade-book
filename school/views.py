@@ -19,4 +19,7 @@ def student_current(request):
         "tasks_queryset": tasks_queryset,
         "marks_queryset": marks_queryset,
     }
-    return render(request, "student.html", context)
+    return render(request, "student_current.html", context)
+
+def student_all(request):
+    return render(request, "student_all.html", {})
