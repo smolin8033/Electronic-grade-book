@@ -37,4 +37,8 @@ def student_all(request):
     return render(request, "student_all.html", context)
 
 def teacher_interface(request):
-    return render(request, "teacher_interface.html")
+    class_queryset = Class.objects.all()
+    context = {
+        "class_queryset": class_queryset,
+    }
+    return render(request, "teacher_interface.html", context)
