@@ -10,22 +10,15 @@
 
 {% block content %}
 <br>
-<p>Choose class number</p>
-<select>
-    <option>I</option>
-    <option>You</option>
-    <option>He</option>
-    <option>She</option>
-    <option>It</option>
+<p>Choose the class</p>
+<select name="input1">
+    {% for class in class_queryset %}
+    {% ifchanged %}
+    <option>{{ class }}</option>
+    {% endifchanged %}
+    {% endfor %}
 </select>
-<p>Choose class group</p>
-<select>
-    <option>Black</option>
-    <option>White</option>
-    <option>Yellow</option>
-    <option>Orange</option>
-    <option>Purple</option>
-</select>
+
 {% endblock %}
 
 </body>
