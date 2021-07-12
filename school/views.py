@@ -35,3 +35,6 @@ def student_all(request):
         "marks_queryset": marks_queryset,
     }
     return render(request, "student_all.html", context)
+
+def teacher_interface(request):
+    return render(request, "teacher_interface")
