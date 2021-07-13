@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The official site of my school</title>
+</head>
+<body bgcolor="c0c0c0">
+<p>Ministry of Education<br>
+    The official site of «Rushmore» high school</p>
+
+{% block content %}
+<br>
+<p>Choose the class:</p>
+<form action="{% url 'test_view' %}" method="POST" >{% csrf_token %}
+<select name="input1">
+    {% for class in class_queryset %}
+    {% ifchanged %}
+    <option>{{ class }}</option>
+    {% endifchanged %}
+    {% endfor %}
+</select>
+<input type="submit" value="Students"/>
+</form>
+
+{% endblock %}
+
+</body>
+</html>
