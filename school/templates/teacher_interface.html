@@ -11,7 +11,7 @@
 {% block content %}
 <br>
 <p>Choose the class:</p>
-<form action="{% url 'test_view' %}" method="POST" >{% csrf_token %}
+<form action="{% url 'class_students' %}" method="POST" >{% csrf_token %}
 <select name="input1">
     {% for class in class_queryset %}
     {% ifchanged %}
