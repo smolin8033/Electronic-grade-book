@@ -44,4 +44,4 @@ def teacher_interface(request):
     return render(request, "teacher_interface.html", context)
 
 def class_students(request):
-    return render(request, "class_students")
+    return render(request, "class_students.html")
