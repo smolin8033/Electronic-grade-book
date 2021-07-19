@@ -34,9 +34,15 @@
     <th>Birthday</th>
     <th>Action</th>
 </tr>
+    {% for student in chosen_class_queryset %}
 <tr>
-    <td></td>
+    <td>{{ student.first_name }}</td>
+    <td>{{ student.second_name }}</td>
+    <td>{{ student.family_name }}</td>
+    <td>{{ student.birthday }}</td>
+    <td>{{ student.address }}</td>
 </tr>
+    {% endfor %}
 </table>
 
 {% endblock %}
