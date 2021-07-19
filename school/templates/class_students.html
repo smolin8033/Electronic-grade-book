@@ -20,7 +20,12 @@
     {% endfor %}
 </select>
 <input type="submit" value="Students"/>
-</form>
+</form><br>
+<p>
+    These are the students from class: {{ chosen_class.class_number }}
+    group: {{ chosen_class.group }}<br><br>
+    This is {{ chosen_class.type_of_class }} class - with {{ chosen_class_students }} students
+</p>
 
 {% endblock %}
 
