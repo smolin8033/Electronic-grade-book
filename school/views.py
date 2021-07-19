@@ -53,5 +53,6 @@ def class_students(request, pk):
     context = {
         "chosen_class": chosen_class,
         "chosen_class_total": chosen_class_total,
+        "chosen_class_queryset": chosen_class_queryset,
     }
     return render(request, "class_students.html", context)
