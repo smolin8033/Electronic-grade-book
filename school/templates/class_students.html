@@ -10,17 +10,10 @@
 
 {% block content %}
 <br>
-<p>Choose the class:</p>
-<form action="{% url 'test_view' %}" method="POST" >{% csrf_token %}
-<select name="input1">
-    {% for class in class_queryset %}
-    {% ifchanged %}
-    <option>{{ class }}</option>
-    {% endifchanged %}
-    {% endfor %}
-</select>
-<input type="submit" value="Students"/>
-</form><br>
+<form action="{% url 'teacher_interface' %}">
+    <input type="submit" value="Go back to choose again" />
+</form>
+<br>
 <p align="center">
     These are the students from class: {{ chosen_class.class_number }}
     group: {{ chosen_class.group }}<br><br>
