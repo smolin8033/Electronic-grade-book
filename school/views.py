@@ -41,6 +41,9 @@ def teacher_interface(request):
     context = {
         "class_queryset": class_queryset,
     }
+    if request.method == "POST":
+        pk = request.POST.get("input1")
+        return redirect("class_students", pk=pk)
     return render(request, "teacher_interface.html", context)
 
 def class_students(request):
