@@ -59,7 +59,7 @@ def class_students(request, pk):
 
 def teacher_student_current(request, pk):
     student = Student.objects.get(pk=pk)
-    tasks_queryset = Task.objects.order_by('end_date')[:10]
+    tasks_queryset = Task.objects.filter(class_id=student.class_id).order_by('end_date')[:10]
     marks_queryset = Mark.objects.all()
     current_date = datetime.datetime.now()
     if "btnform1" in request.POST:
