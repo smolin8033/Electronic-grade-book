@@ -46,5 +46,9 @@ def teacher_interface(request):
         return redirect("class_students", pk=pk)
     return render(request, "teacher_interface.html", context)
 
-def class_students(request):
-    return render(request, "class_students.html")
+def class_students(request, pk):
+    class_id = get_object_or_404(Class, pk=pk)
+    context = {
+        "class_id": class_id,
+    }
+    return render(request, "class_students.html", context)
