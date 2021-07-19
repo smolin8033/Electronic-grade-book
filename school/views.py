@@ -47,8 +47,8 @@ def teacher_interface(request):
     return render(request, "teacher_interface.html", context)
 
 def class_students(request, pk):
-    class_id = get_object_or_404(Class, pk=pk)
+    chosen_class = get_object_or_404(Class, pk=pk)
     context = {
-        "class_id": class_id,
+        "chosen_class": chosen_class,
     }
     return render(request, "class_students.html", context)
