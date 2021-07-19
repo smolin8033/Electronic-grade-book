@@ -48,7 +48,9 @@ def teacher_interface(request):
 
 def class_students(request, pk):
     chosen_class = get_object_or_404(Class, pk=pk)
+    chosen_class_students = Student.objects.filter(class_id=chosen_class).count()
     context = {
         "chosen_class": chosen_class,
+        "chosen_class_students": chosen_class_students,
     }
     return render(request, "class_students.html", context)
