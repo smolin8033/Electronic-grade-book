@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h4>Student:{{student.get_full_name}}</h4>
+<h4>Class:{{student.class_id}}</h4>
+<p>Birthday: {{student.birthday}}<br><br>
+Today is: {{current_date|date:"M. d, Y"}}
+</p>
+<table border="1" bgcolor="f2f3f4" align="center">
+    <caption><strong>The current tasks are:</strong></caption>
+    <tr>
+        <th>№</th>
+        <th>Task Name</th>
+        <th>Discipline</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Mark</th>
+    </tr>
+    {% for task in tasks_queryset %}
+    <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ task.task_name }}</td>
+        <td>{{ task.discipline_id }}</td>
+        <td>{{ task.start_date|date:"N. d, Y" }}</td>
+        <td>{{ task.end_date|date:"N. d, Y" }}</td>
+        <td>{% for mark in marks_queryset %}
+            {% if mark.task_id.task_name == task.task_name %}
+            {{ mark.final_score }}
+            {% endif %}
+            {% endfor %}
+        </td>
+    </tr>
+    {% endfor %}
+</table><br>
+<center>
+    <form method="POST">{% csrf_token %}{{ form.as_p }}
+        <button type="submit" name="btnform1">Show all tasks</button>
+    </form>
+</center>
+{% endblock %}
