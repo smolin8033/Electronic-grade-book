@@ -70,4 +70,4 @@ def teacher_student_current(request):
         "tasks_queryset": tasks_queryset,
         "marks_queryset": marks_queryset,
     }
-    return render(request, "student_current.html", context)
+    return render(request, "teacher_student_current.html", context)
