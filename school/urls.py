@@ -7,4 +7,5 @@ urlpatterns = [
     path('student/all/', views.student_all, name='student_all'),
     path('teacher/', views.teacher_interface, name='teacher_interface'),
     path('teacher/<int:pk>/class/', views.class_students, name="class_students"),
+    path('teacher/current/', views.teacher_student_current, name="teacher_current"),
 ]
