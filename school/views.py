@@ -56,3 +56,18 @@ def class_students(request, pk):
         "chosen_class_queryset": chosen_class_queryset,
     }
     return render(request, "class_students.html", context)
+
+def teacher_student_current(request):
+    student = Student.objects.get(id=4)
+    tasks_queryset = Task.objects.order_by('end_date')[:10]
+    marks_queryset = Mark.objects.all()
+    current_date = datetime.datetime.now()
+    if "btnform1" in request.POST:
+        return redirect("/school/student/all/")
+    context = {
+        "student": student,
+        "current_date": current_date,
+        "tasks_queryset": tasks_queryset,
+        "marks_queryset": marks_queryset,
+    }
+    return render(request, "student_current.html", context)
