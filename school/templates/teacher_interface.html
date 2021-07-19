@@ -15,7 +15,7 @@
 <select name="input1">
     {% for class in class_queryset %}
     {% ifchanged %}
-    <option>{{ class }}</option>
+    <option value="{{ class.id }}">{{ class }}</option>
     {% endifchanged %}
     {% endfor %}
 </select>
