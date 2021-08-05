@@ -26,7 +26,13 @@ Today is: {{current_date|date:"M. d, Y"}}
         <td>{{ task.discipline_id }}</td>
         <td>{{ task.start_date|date:"N. d, Y" }}</td>
         <td>{{ task.end_date|date:"N. d, Y" }}</td>
-        <td>{{ task.mark_set.get }}</td>
+        <td>
+            {% if task.mark_set.get %}
+            {{ task.mark_set.get }}
+            {% else %}
+            Finally I got it
+            {% endif %}
+        </td>
     </tr>
     {% endfor %}
 </table><br>
