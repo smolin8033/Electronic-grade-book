@@ -91,5 +91,7 @@ class Mark(models.Model):
     final_score = models.IntegerField()
     task_id = models.ForeignKey(Task, on_delete=models.DO_NOTHING, default="")
 
+    def __str__(self):
+        return str(self.final_score)
 
 # Create your models here.
