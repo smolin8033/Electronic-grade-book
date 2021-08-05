@@ -26,12 +26,7 @@ Today is: {{current_date|date:"M. d, Y"}}
         <td>{{ task.discipline_id }}</td>
         <td>{{ task.start_date|date:"N. d, Y" }}</td>
         <td>{{ task.end_date|date:"N. d, Y" }}</td>
-        <td>{% for mark in marks_queryset %}
-            {% if mark.task_id.task_name == task.task_name %}
-            {{ mark.final_score }}
-            {% endif %}
-            {% endfor %}
-        </td>
+        <td>{{ task.mark_set.get }}</td>
     </tr>
     {% endfor %}
 </table><br>
