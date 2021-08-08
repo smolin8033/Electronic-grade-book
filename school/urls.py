@@ -8,4 +8,5 @@ urlpatterns = [
     path('teacher/', views.teacher_interface, name='teacher_interface'),
     path('teacher/<int:pk>/class/', views.class_students, name="class_students"),
     path('teacher/<int:pk>/current/', views.teacher_student_current, name="teacher_current"),
+    path('teacher/mark/add/', views.mark_create_view, name="mark_add"),
 ]
