@@ -72,4 +72,7 @@ def teacher_student_current(request, pk):
 
 def mark_create_view(request, pk):
     student = get_object_or_404(Student, pk=pk)
-    return render(request, "add_mark.html")
+    context = {
+        "student": student,
+    }
+    return render(request, "add_mark.html", context)
