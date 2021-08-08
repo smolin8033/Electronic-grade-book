@@ -69,3 +69,6 @@ def teacher_student_current(request, pk):
         "tasks_queryset": tasks_queryset,
     }
     return render(request, "teacher_student_current.html", context)
+
+def mark_create_view(request):
+    return render(request, "add_mark.html")
