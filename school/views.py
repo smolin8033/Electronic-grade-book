@@ -75,5 +75,6 @@ def mark_create_view(request, pk, rel_task):
     task = get_object_or_404(Task, id=rel_task)
     context = {
         "student": student,
+        "task": task,
     }
     return render(request, "add_mark.html", context)
