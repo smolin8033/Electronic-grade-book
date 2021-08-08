@@ -30,7 +30,7 @@ Today is: {{current_date|date:"M. d, Y"}}
             {% if task.mark_set.get %}
             {{ task.mark_set.get }}
             {% else %}
-            <a href="{% url 'mark_add' pk=student.id %}">Add mark</a>
+            <a href="{% url 'mark_add' pk=student.id rel_task=task.id %}">Add mark</a>
             {% endif %}
         </td>
     </tr>
