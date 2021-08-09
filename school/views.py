@@ -78,5 +78,6 @@ def mark_create_view(request, pk, rel_task):
     context = {
         "student": student,
         "task": task,
+        "form": form,
     }
     return render(request, "add_mark.html", context)
