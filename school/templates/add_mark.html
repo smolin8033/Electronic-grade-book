@@ -17,6 +17,9 @@
 <form action="." method="POST">{% csrf_token %}
 {{ form.as_p }}
 <input type="submit" value="Save" />
+</form> <br>
+<form action="{% url 'teacher_current' pk=student.id %}">
+    <input type="submit" value="Choose another task" />
 </form>
 
 {% endblock %}
