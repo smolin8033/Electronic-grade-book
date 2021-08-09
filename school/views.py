@@ -75,6 +75,11 @@ def mark_create_view(request, pk, rel_task):
     student = get_object_or_404(Student, pk=pk)
     task = get_object_or_404(Task, id=rel_task)
     form = MarkForm(request.POST or None)
+    if form.is_valid():
+        mark = form.save(commit=False)
+        mark.student_id = student
+        mark.task_id = task
+        mark.save()
     context = {
         "student": student,
         "task": task,
