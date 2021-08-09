@@ -74,6 +74,7 @@ def teacher_student_current(request, pk):
 def mark_create_view(request, pk, rel_task):
     student = get_object_or_404(Student, pk=pk)
     task = get_object_or_404(Task, id=rel_task)
+    form = MarkForm(request.POST or None)
     context = {
         "student": student,
         "task": task,
