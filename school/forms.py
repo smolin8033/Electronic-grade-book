@@ -2,9 +2,11 @@ from django import forms
 from .models import Mark
 
 class MarkForm(forms.ModelForm):
-    final_score = forms.IntegerField(label='', attrs={
-        "placeholder": "Mark given",
-    }
+    final_score = forms.IntegerField(label='', widget=forms.Textarea(
+        attrs={
+            'placeholder': "Given mark",
+        }
+    )
     )
     class Meta:
         model = Mark
