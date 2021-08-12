@@ -9,7 +9,14 @@
     The official site of «Rushmore» high school</p>
 
 {% block content %}
-replace me
+<h4>The mark for:</h4>
+<h4>Student: {{ mark.student_id.get_full_name }}</h4>
+<h4>Task: {{ mark.task_id }}</h4>
+Change mark:
+<form action="." method="POST">{% csrf_token %}
+{{ form.as_p }}
+<input type="submit" value="Update"/>
+</form>
 {% endblock %}
 
 </body>
