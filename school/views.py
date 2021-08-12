@@ -88,10 +88,9 @@ def mark_create_view(request, pk, rel_task):
         "form": form,
     }
     return render(request, "add_mark.html", context)
-'''
+
 class MarkUpdateView(UpdateView):
     model = Mark
     form_class = MarkForm
     context_object_name = "mark"
-    template_name = 
-'''
+    template_name = "mark_update.html"
