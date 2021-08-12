@@ -104,3 +104,6 @@ class MarkDeleteView(DeleteView):
     form_class = MarkForm
     context_object_name = "mark"
     template_name = "mark_delete.html"
+
+    def get_success_url(self):
+        return reverse("teacher_current", kwargs={"pk": self.object.student_id.id})
