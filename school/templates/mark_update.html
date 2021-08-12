@@ -19,7 +19,7 @@ Change mark:
 </form> <br>
 <form action="{% url 'teacher_current' pk=mark.student_id.id %}">
     <input type="submit" value="Choose another task" />
-</form>
+</form> <br>
 <form action="{% url 'mark_delete' pk=mark.id %}">
     <input type="submit" value="Delete chosen mark" />
 </form>
