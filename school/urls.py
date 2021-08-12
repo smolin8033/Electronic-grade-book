@@ -1,6 +1,5 @@
 from django.urls import path
 from . import views
-
 urlpatterns = [
     path('', views.test_view, name='test_view'),
     path('student/current/', views.student_current, name='student_current'),
@@ -10,4 +9,5 @@ urlpatterns = [
     path('teacher/<int:pk>/current/', views.teacher_student_current, name="teacher_current"),
     path('teacher/<int:pk>/<int:rel_task>/mark/add/', views.mark_create_view, name="mark_add"),
     path('teacher/<int:pk>/mark/update/', views.MarkUpdateView.as_view(), name="mark_update"),
+    path('teacher/<int:pk>/mark/delete/', views.MarkDeleteView.as_view(), name="mark_delete"),
 ]
