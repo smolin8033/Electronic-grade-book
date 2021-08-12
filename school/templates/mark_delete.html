@@ -13,6 +13,9 @@
     <h4>Are you sure you want to delete the mark: {{ mark }}</h4>
     <h4>To the task: {{ mark.task_id }}?</h4>
 <input type="submit" value="Delete" />
+</form> <br>
+<form action="{% url 'mark_update' pk=mark.id %}">
+    <input type="submit" value="Cancel" />
 </form>
 {% endblock %}
 
