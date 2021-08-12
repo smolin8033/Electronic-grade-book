@@ -95,3 +95,6 @@ class MarkUpdateView(UpdateView):
     form_class = MarkForm
     context_object_name = "mark"
     template_name = "mark_update.html"
+
+    def get_success_url(self):
+        return reverse("teacher_current", kwargs={"pk": self.object.student_id.id})
