@@ -9,7 +9,11 @@
     The official site of «Rushmore» high school</p>
 
 {% block content %}
-replace me
+<form action="." method="POST">{% csrf_token %}
+    <h4>Are you sure you want to delete the mark: {{ mark }}</h4>
+    <h4>To the task: {{ mark.task_id }}?</h4>
+<input type="submit" value="Delete" />
+</form>
 {% endblock %}
 
 </body>
