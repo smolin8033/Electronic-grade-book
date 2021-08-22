@@ -10,7 +10,7 @@
 {{ form.as_p }}
 <input type="submit" value="Save" />
 </form> <br>
-<form action="{% url 'teacher_current' pk=student.id %}">
+<form action="{% url 'teacher_unrated' pk=student.id %}">
     <input type="submit" value="Choose another task" />
 </form>
 
