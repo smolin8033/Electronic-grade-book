@@ -65,7 +65,7 @@ def teacher_rated(request, pk):
     student = Student.objects.get(pk=pk)
     marks_queryset = Mark.objects.filter(student_id=student).order_by("task_id")
     current_date = datetime.datetime.now()
-    if "btnform1" in request.POST:
+    if "to_unrated_tasks" in request.POST:
         return redirect("teacher_unrated", pk=student.id)
     context = {
         "student": student,
