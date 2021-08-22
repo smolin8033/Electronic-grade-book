@@ -85,7 +85,6 @@ def teacher_unrated(request, pk):
     context = {
         "student": student,
         "current_date": current_date,
-        "marks_queryset": marks_queryset,
         "tasks_queryset": tasks_queryset,
     }
     return render(request, "teacher_unrated.html", context)
