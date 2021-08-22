@@ -81,7 +81,7 @@ def teacher_unrated(request, pk):
     )
     current_date = datetime.datetime.now()
     if "btnform1" in request.POST:
-        return redirect("/school/student/all/")
+        return redirect("teacher_rated", pk=student.id)
     context = {
         "student": student,
         "current_date": current_date,
