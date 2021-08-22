@@ -60,7 +60,7 @@ def class_students(request, pk):
     }
     return render(request, "class_students.html", context)
 
-def teacher_student_current(request, pk):
+def teacher_rated(request, pk):
     student = Student.objects.get(pk=pk)
     tasks_queryset = Task.objects.filter(class_id=student.class_id).order_by('end_date')[:10]
     current_date = datetime.datetime.now()
