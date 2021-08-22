@@ -26,7 +26,7 @@
     <td>{{ student.family_name }}</td>
     <td>{{ student.birthday }}</td>
     <td>
-        <a href="{% url 'teacher_rated' pk=student.id %}">
+        <a href="{% url 'teacher_unrated' pk=student.id %}">
             View
         </a>
     </td>
