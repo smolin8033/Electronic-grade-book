@@ -84,7 +84,7 @@ def teacher_unrated(request, pk):
         "current_date": current_date,
         "marks_queryset": marks_queryset,
     }
-    return render(request, "teacher_rated.html", context)
+    return render(request, "teacher_unrated.html", context)
 
 def mark_create_view(request, pk, rel_task):
     student = get_object_or_404(Student, pk=pk)
