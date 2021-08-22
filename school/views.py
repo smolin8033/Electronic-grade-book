@@ -76,7 +76,9 @@ def teacher_rated(request, pk):
 
 def teacher_unrated(request, pk):
     student = Student.objects.get(pk=pk)
-    marks_queryset = Mark.objects.filter(student_id=student)
+    tasks_queryset = Task.objects.filter(class_id=student.class_id).(
+        ~Q(mark__student_id=student)
+    )
     current_date = datetime.datetime.now()
     if "btnform1" in request.POST:
         return redirect("/school/student/all/")
