@@ -71,7 +71,7 @@ def teacher_rated(request, pk):
         "current_date": current_date,
         "tasks_queryset": tasks_queryset,
     }
-    return render(request, "teacher_student_current.html", context)
+    return render(request, "teacher_rated.html", context)
 
 def mark_create_view(request, pk, rel_task):
     student = get_object_or_404(Student, pk=pk)
