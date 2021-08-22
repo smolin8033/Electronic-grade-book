@@ -69,7 +69,7 @@ def teacher_rated(request, pk):
     context = {
         "student": student,
         "current_date": current_date,
-        "tasks_queryset": tasks_queryset,
+        "marks_queryset": marks_queryset,
     }
     return render(request, "teacher_rated.html", context)
 
