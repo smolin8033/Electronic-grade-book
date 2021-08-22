@@ -63,7 +63,7 @@ def class_students(request, pk):
 
 def teacher_rated(request, pk):
     student = Student.objects.get(pk=pk)
-    marks_queryset = Mark.objects.filter(student_id=student)
+    marks_queryset = Mark.objects.filter(student_id=student).order_by("task_id")
     current_date = datetime.datetime.now()
     if "btnform1" in request.POST:
         return redirect("/school/student/all/")
