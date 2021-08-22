@@ -76,7 +76,7 @@ def teacher_rated(request, pk):
 
 def teacher_unrated(request, pk):
     student = Student.objects.get(pk=pk)
-    tasks_queryset = Task.objects.filter(class_id=student.class_id).(
+    tasks_queryset = Task.objects.filter(class_id=student.class_id).filter(
         ~Q(mark__student_id=student)
     )
     current_date = datetime.datetime.now()
@@ -86,6 +86,7 @@ def teacher_unrated(request, pk):
         "student": student,
         "current_date": current_date,
         "marks_queryset": marks_queryset,
+        "tasks_queryset": tasks_queryset,
     }
     return render(request, "teacher_unrated.html", context)
 
