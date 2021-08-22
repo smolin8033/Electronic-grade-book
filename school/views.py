@@ -98,7 +98,7 @@ def mark_create_view(request, pk, rel_task):
         mark.student_id = student
         mark.task_id = task
         mark.save()
-        return redirect("teacher_current", pk=pk)
+        return redirect("teacher_unrated", pk=pk)
     context = {
         "student": student,
         "task": task,
