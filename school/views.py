@@ -80,7 +80,7 @@ def teacher_unrated(request, pk):
         ~Q(mark__student_id=student)
     )
     current_date = datetime.datetime.now()
-    if "btnform1" in request.POST:
+    if "to_rated_tasks" in request.POST:
         return redirect("teacher_rated", pk=student.id)
     context = {
         "student": student,
