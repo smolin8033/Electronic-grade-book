@@ -7,6 +7,7 @@ urlpatterns = [
     path('teacher/', views.teacher_interface, name='teacher_interface'),
     path('teacher/<int:pk>/class/', views.class_students, name="class_students"),
     path('teacher/<int:pk>/rated/', views.teacher_rated, name="teacher_rated"),
+    path('teacher/<int:pk>/all_rated/', views.teacher_all_rated, name="teacher_all_rated"),
     path('teacher/<int:pk>/unrated/', views.teacher_unrated, name="teacher_unrated"),
     path('teacher/<int:pk>/all_unrated/', views.teacher_all_unrated, name="teacher_all_unrated"),
     path('teacher/<int:pk>/<int:rel_task>/mark/add/', views.mark_create_view, name="mark_add"),
