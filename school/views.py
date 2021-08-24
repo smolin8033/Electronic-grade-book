@@ -89,6 +89,21 @@ def teacher_unrated(request, pk):
     }
     return render(request, "teacher_unrated.html", context)
 
+def teacher_all_unrated(request, pk):
+    student = Student.objects.get(pk=pk)
+    tasks_queryset = Task.objects.filter(class_id=student.class_id).filter(
+        ~Q(mark__student_id=student)
+    )
+    current_date = datetime.datetime.now()
+    if "to_rated_tasks" in request.POST:
+        return redirect("teacher_rated", pk=student.id)
+    context = {
+        "student": student,
+        "current_date": current_date,
+        "tasks_queryset": tasks_queryset,
+    }
+    return render(request, "teacher_unrated.html", context)
+
 def mark_create_view(request, pk, rel_task):
     student = get_object_or_404(Student, pk=pk)
     task = get_object_or_404(Task, id=rel_task)
