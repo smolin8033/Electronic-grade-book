@@ -78,7 +78,7 @@ def teacher_unrated(request, pk):
     student = Student.objects.get(pk=pk)
     tasks_queryset = Task.objects.filter(class_id=student.class_id).filter(
         ~Q(mark__student_id=student)
-    )
+    )[:10]
     current_date = datetime.datetime.now()
     if "to_rated_tasks" in request.POST:
         return redirect("teacher_rated", pk=student.id)
