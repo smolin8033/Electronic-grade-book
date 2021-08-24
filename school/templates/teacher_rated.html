@@ -36,5 +36,8 @@ Today is: {{current_date|date:"M. d, Y"}}
     <form method="POST">{% csrf_token %}{{ form.as_p }}
         <button type="submit" name="to_unrated_tasks">Show unrated tasks</button>
     </form>
+    <form method="POST">{% csrf_token %}{{ form.as_p }}
+        <button type="submit" name="to_all_tasks">See all tasks</button>
+    </form>
 </center>
 {% endblock %}
