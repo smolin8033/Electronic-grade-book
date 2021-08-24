@@ -99,6 +99,8 @@ def teacher_all_unrated(request, pk):
     current_date = datetime.datetime.now()
     if "to_rated_tasks" in request.POST:
         return redirect("teacher_rated", pk=student.id)
+    elif "to_unrated_tasks" in request.POST:
+        return redirect("teacher_unrated", pk=student.id)
     context = {
         "student": student,
         "current_date": current_date,
