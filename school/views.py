@@ -74,6 +74,19 @@ def teacher_rated(request, pk):
     }
     return render(request, "teacher_rated.html", context)
 
+def teacher_all_rated(request, pk):
+    student = Student.objects.get(pk=pk)
+    marks_queryset = Mark.objects.filter(student_id=student).order_by("task_id")[:10]
+    current_date = datetime.datetime.now()
+    if "to_unrated_tasks" in request.POST:
+        return redirect("teacher_unrated", pk=student.id)
+    context = {
+        "student": student,
+        "current_date": current_date,
+        "marks_queryset": marks_queryset,
+    }
+    return render(request, "teacher_rated.html", context)
+
 def teacher_unrated(request, pk):
     student = Student.objects.get(pk=pk)
     tasks_queryset = Task.objects.filter(class_id=student.class_id).filter(
