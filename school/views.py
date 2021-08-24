@@ -85,7 +85,7 @@ def teacher_all_rated(request, pk):
         "current_date": current_date,
         "marks_queryset": marks_queryset,
     }
-    return render(request, "teacher_rated.html", context)
+    return render(request, "teacher_all_rated.html", context)
 
 def teacher_unrated(request, pk):
     student = Student.objects.get(pk=pk)
