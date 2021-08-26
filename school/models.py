@@ -15,7 +15,7 @@ class TypeOfClass(models.Model):
 class Class(models.Model):
     group = models.CharField(max_length=30)
     class_number = models.IntegerField()
-    type_of_class = models.ForeignKey(TypeOfClass, on_delete=models.DO_NOTHING, default="")
+    type_of_class = models.ForeignKey(TypeOfClass, on_delete=models.CASCADE, default="")
 
     def __str__(self):
         return "%s%s" % \
@@ -32,7 +32,7 @@ class Student(models.Model):
     family_name = models.CharField(max_length=50)
     address = models.CharField(max_length=60)
     birthday = models.DateField()
-    class_id = models.ForeignKey(Class, on_delete=models.DO_NOTHING, default="")
+    class_id = models.ForeignKey(Class, on_delete=models.CASCADE, default="")
 
     def get_full_name(self):
         return "%s %s %s" % (self.first_name, self.second_name, self.family_name)
@@ -59,8 +59,8 @@ class Teacher(models.Model):
 class Discipline(models.Model):
     name = models.CharField(max_length=40)
     type = models.CharField(max_length=40)
-    class_id = models.ForeignKey(Class, on_delete=models.DO_NOTHING, default="")
-    teacher_id = models.ForeignKey(Teacher, on_delete=models.DO_NOTHING, default="")
+    class_id = models.ForeignKey(Class, on_delete=models.CASCADE, default="")
+    teacher_id = models.ForeignKey(Teacher, on_delete=models.CASCADE, default="")
     hours = models.IntegerField()
 
     def __str__(self):
@@ -71,10 +71,10 @@ class Task(models.Model):
     task_name = models.CharField(max_length=100)
     start_date = models.DateTimeField()
     end_date = models.DateTimeField()
-    class_id = models.ForeignKey(Class, on_delete=models.DO_NOTHING, default="")
-    teacher_id = models.ForeignKey(Teacher, on_delete=models.DO_NOTHING, default="")
+    class_id = models.ForeignKey(Class, on_delete=models.CASCADE, default="")
+    teacher_id = models.ForeignKey(Teacher, on_delete=models.CASCADE, default="")
     commentary = models.TextField()
-    discipline_id = models.ForeignKey(Discipline, on_delete=models.DO_NOTHING, default="")
+    discipline_id = models.ForeignKey(Discipline, on_delete=models.CASCADE, default="")
 
     def __str__(self):
         return self.task_name
@@ -84,15 +84,15 @@ class Task(models.Model):
 
 
 class Curriculum(models.Model):
-    teacher_id = models.ForeignKey(Teacher, on_delete=models.DO_NOTHING, default="")
-    class_id = models.ForeignKey(Class, on_delete=models.DO_NOTHING, default="")
-    discipline_id = models.ForeignKey(Discipline, on_delete=models.DO_NOTHING, default="")
+    teacher_id = models.ForeignKey(Teacher, on_delete=models.CASCADE, default="")
+    class_id = models.ForeignKey(Class, on_delete=models.CASCADE, default="")
+    discipline_id = models.ForeignKey(Discipline, on_delete=models.CASCADE, default="")
 
 
 class Mark(models.Model):
-    student_id = models.ForeignKey(Student, on_delete=models.DO_NOTHING, default="")
+    student_id = models.ForeignKey(Student, on_delete=models.CASCADE, default="")
     final_score = models.IntegerField()
-    task_id = models.ForeignKey(Task, on_delete=models.DO_NOTHING, default="")
+    task_id = models.ForeignKey(Task, on_delete=models.CASCADE, default="")
 
     def __str__(self):
         return str(self.final_score)
