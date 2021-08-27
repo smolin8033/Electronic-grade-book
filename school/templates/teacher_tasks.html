@@ -23,7 +23,7 @@
     </tr>
     {% endfor %}
 </table> <br>
-<form action="{% url 'teacher_tasks_create' pk=chosen_class.id %}">
+<form action="{% url 'tasks_create' pk=chosen_class.id %}">
     <input type="submit" value="Go back to choose again" />
 </form>
 {% endblock %}
