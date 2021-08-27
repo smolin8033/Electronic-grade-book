@@ -42,11 +42,12 @@ def student_all(request):
 
 def teacher_interface(request):
     class_queryset = Class.objects.order_by("class_number", "group")
-    pk = request.POST.get("input1")
-    if request.method == "POST" and "students" in request.POST:
-        return redirect("class_students", pk=pk)
-    else:
-        return redirect("teacher_tasks", pk=pk)
+    if request.method == "POST":
+        pk = request.POST.get("input1")
+        if "students" in request.POST:
+            return redirect("class_students", pk=pk)
+        else:
+            return redirect("teacher_tasks", pk=pk)
     context = {
         "class_queryset": class_queryset,
     }
