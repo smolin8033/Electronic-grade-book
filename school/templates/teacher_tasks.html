@@ -1,5 +1,23 @@
 {% extends 'base.html' %}
 
 {% block content %}
-Does it work?
+<table border="1" bgcolor="f2f3f4" align="center">
+    <caption><strong>The tasks of chosen class are:</strong></caption>
+    <tr>
+        <th>№</th>
+        <th>Task Name</th>
+        <th>Discipline</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+    </tr>
+    {% for task in task_list %}
+    <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ task.task_name }}</td>
+        <td>{{ task.discipline_id }}</td>
+        <td>{{ task.start_date|date:"N. d, Y" }}</td>
+        <td>{{ task.end_date|date:"N. d, Y" }}</td>
+    </tr>
+    {% endfor %}
+</table>
 {% endblock %}
