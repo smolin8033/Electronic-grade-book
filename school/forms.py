@@ -1,5 +1,5 @@
 from django import forms
-from .models import Mark, Task
+from .models import Mark, Task, Class, Teacher, Discipline
 
 
 class MarkForm(forms.ModelForm):
