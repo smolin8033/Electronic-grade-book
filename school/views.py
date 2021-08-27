@@ -161,3 +161,11 @@ class MarkDeleteView(DeleteView):
 
     def get_success_url(self):
         return reverse("teacher_rated", kwargs={"pk": self.object.student_id.id})
+
+class TaskListView(ListView):
+    model = Class
+    template_name = "teacher_tasks.html"
+    context_object_name = "task_list"
+
+    def get_queryset(self):
+        return Task.objects.filter(class_id=self.kwargs["pk"])
