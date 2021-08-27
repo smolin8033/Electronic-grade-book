@@ -2,6 +2,9 @@ from django import forms
 from .models import Mark, Task, Class, Teacher, Discipline
 
 
+class DateInput(forms.DateInput):
+    input_type = "date"
+
 class MarkForm(forms.ModelForm):
     final_score = forms.IntegerField(label='')
 
