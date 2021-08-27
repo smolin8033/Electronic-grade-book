@@ -1,7 +1,7 @@
 import datetime
 from django.shortcuts import (render, redirect,
 get_object_or_404, reverse)
-from django.views.generic import UpdateView, DeleteView, ListView
+from django.views.generic import UpdateView, DeleteView, ListView, CreateView
 from django.db.models import Q
 from .models import Student, Class, Task, Mark
 from.forms import MarkForm
