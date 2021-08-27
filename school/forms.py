@@ -17,9 +17,9 @@ class TaskCreateForm(forms.ModelForm):
     task_name = forms.CharField(max_length=100, required=True)
     start_date = forms.DateField(required=True)
     end_date = forms.DateField(required=True)
-    class_id = forms.ModelChoiceField(required=True, queryset=None)
-    teacher_id = forms.ModelChoiceField(required=True, queryset=None)
-    discipline_id = forms.ModelChoiceField(required=True, queryset=None)
+    class_id = forms.ModelChoiceField(required=True, queryset=Class.objects.all())
+    teacher_id = forms.ModelChoiceField(required=True, queryset=Teacher.objects.all())
+    discipline_id = forms.ModelChoiceField(required=True, queryset=Discipline.objects.all())
     commentary = forms.CharField(required=True, widget=forms.Textarea(attrs={
         "rows": 10,
         "cols": 10,
