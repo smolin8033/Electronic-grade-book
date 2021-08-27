@@ -180,3 +180,8 @@ class TaskListView(ListView):
 class TaskCreateView(CreateView):
     template_name = "teacher_tasks_create.html"
     form_class = TaskCreateForm
+
+    def get_initial(self, *args, **kwargs):
+        initial = super(TaskCreateView, self).get_initial(**kwargs)
+        initial["class_id"] = self.kwargs["pk"]
+        return initial
