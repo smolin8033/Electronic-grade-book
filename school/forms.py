@@ -19,6 +19,7 @@ class TaskCreateForm(forms.ModelForm):
     end_date = forms.DateField(required=True)
     class_id = forms.ModelChoiceField(required=True)
     teacher_id = forms.ModelChoiceField(required=True)
+    discipline_id = forms.ModelChoiceField(required=True)
     commentary = forms.CharField(required=True, widget=forms.Textarea(attrs={
         "rows": 10,
         "cols": 10,
@@ -36,4 +37,5 @@ class TaskCreateForm(forms.ModelForm):
             "class_id",
             "teacher_id",
             "commentary",
+            "discipline_id",
         ]
