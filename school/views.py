@@ -170,3 +170,9 @@ class TaskListView(ListView):
 
     def get_queryset(self):
         return Task.objects.filter(class_id=self.kwargs["pk"])
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        chosen_class = Class.objects.get(id=self.kwargs["pk"])
+        context["chosen_class"] = chosen_class
+        return context
