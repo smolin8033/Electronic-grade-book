@@ -13,5 +13,5 @@ urlpatterns = [
     path('teacher/<int:pk>/<int:rel_task>/mark/add/', views.mark_create_view, name="mark_add"),
     path('teacher/<int:pk>/mark/update/', views.MarkUpdateView.as_view(), name="mark_update"),
     path('teacher/<int:pk>/mark/delete/', views.MarkDeleteView.as_view(), name="mark_delete"),
-    path('teacher/<int:pk>/tasks/', views.TaskListView, name="teacher_tasks"),
+    path('teacher/<int:pk>/tasks/', views.TaskListView.as_view(), name="teacher_tasks"),
 ]
