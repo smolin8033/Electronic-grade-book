@@ -49,3 +49,7 @@ class TaskCreateForm(forms.ModelForm):
             "commentary",
             "discipline_id",
         ]
+        widgets = {
+            "start_date": DateInput(),
+            "end_date": DateInput(),
+        }
