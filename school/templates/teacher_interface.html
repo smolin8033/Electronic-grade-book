@@ -2,6 +2,7 @@
 
 {% block content %}
 <br>
+<center>
 <p>Choose the class:</p>
 <form method="POST" >{% csrf_token %}
 <select name="input1">
@@ -14,6 +15,7 @@
 <input type="submit" name="students" value="Students"/>
 <input type="submit" name="tasks" value="Tasks" />
 </form>
+</center>
 
 {% endblock %}
 
