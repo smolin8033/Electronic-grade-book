@@ -176,3 +176,7 @@ class TaskListView(ListView):
         chosen_class = Class.objects.get(id=self.kwargs["pk"])
         context["chosen_class"] = chosen_class
         return context
+
+class TaskCreateView(CreateView):
+    template_name = "teacher_tasks_create.html"
+    form_class = TaskCreateForm
