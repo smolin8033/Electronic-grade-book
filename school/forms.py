@@ -18,8 +18,6 @@ class MarkForm(forms.ModelForm):
 
 class TaskCreateForm(forms.ModelForm):
     task_name = forms.CharField(max_length=100)
-    start_date = forms.DateField()
-    end_date = forms.DateField()
     class_id = forms.ModelChoiceField(
         label="Choose a class",
         queryset=Class.objects.all()
