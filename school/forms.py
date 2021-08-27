@@ -22,7 +22,7 @@ class TaskCreateForm(forms.ModelForm):
     discipline_id = forms.ModelChoiceField(required=True, queryset=Discipline.objects.all())
     commentary = forms.CharField(required=True, widget=forms.Textarea(attrs={
         "rows": 10,
-        "cols": 10,
+        "cols": 40,
     }
 
     )
