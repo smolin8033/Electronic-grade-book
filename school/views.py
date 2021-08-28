@@ -185,3 +185,9 @@ class TaskCreateView(CreateView):
         initial = super(TaskCreateView, self).get_initial(**kwargs)
         initial["class_id"] = self.kwargs["pk"]
         return initial
+
+class TaskUpdateView(UpdateView):
+    model = Task
+    form_class = TaskForm
+    context_object_name = "task"
+    template_name = "teacher_tasks_update.html"
