@@ -17,7 +17,7 @@
     <tr>
         <td>{{ forloop.counter }}</td>
         <td>
-            <a href="{ url 'tasks_update' pk=task.id }">{{ task.task_name }}</a>
+            <a href="{% url 'tasks_update' pk=task.id %}">{{ task.task_name }}</a>
         </td>
         <td>{{ task.discipline_id }}</td>
         <td>{{ task.start_date|date:"N. d, Y" }}</td>
