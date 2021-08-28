@@ -80,6 +80,9 @@ class Task(models.Model):
     def __str__(self):
         return self.task_name
 
+    def get_absolute_url(self):
+        return reverse("teacher_tasks", kwargs={"pk": self.class_id.id})
+
     class Meta:
         ordering = ("end_date",)
 
