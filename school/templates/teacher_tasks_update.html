@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<form action="{% url 'teacher_tasks' pk=task.class_id.id %}">
+<form action="{{ task.get_absolute_url }}">
     <input type="submit" value="Go back to the tasks" />
 </form>
 <center>
