@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<form action="{% url 'teacher_tasks' pk=task.class_id.id %}">
+    <input type="submit" value="Go back to the tasks" />
+</form>
 <center>
     Update the task:
     <form action="." method="POST">{% csrf_token %}
