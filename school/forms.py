@@ -16,7 +16,7 @@ class MarkForm(forms.ModelForm):
         ]
 
 
-class TaskCreateForm(forms.ModelForm):
+class TaskForm(forms.ModelForm):
     task_name = forms.CharField(max_length=100)
     class_id = forms.ModelChoiceField(
         label="Choose a class",
