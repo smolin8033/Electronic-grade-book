@@ -9,6 +9,9 @@
     <form action="." method="POST">{% csrf_token %}
         {{ form.as_p }}
         <input type="submit" value="Update" />
+    </form> <br>
+    <form action="{% url 'tasks_delete' pk=task.id %}">
+        <input type="submit" value="Delete"/>
     </form>
 </center>
 {% endblock %}
