@@ -196,3 +196,8 @@ class TaskUpdateView(UpdateView):
     form_class = TaskForm
     context_object_name = "task"
     template_name = "teacher_tasks_update.html"
+
+class TaskDeleteView(DeleteView):
+    model = Task
+    context_object_name = "task"
+    template_name = "teacher_tasks_delete.html"
