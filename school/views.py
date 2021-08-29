@@ -207,3 +207,8 @@ class TaskDeleteView(DeleteView):
 
 def manager_interface(request):
     return render(request, "manager_interface.html")
+
+class StudentListView(ListView):
+    model = Student
+    template_name = "manager_students.html"
+    context_object_name = "student_list"
