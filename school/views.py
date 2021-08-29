@@ -201,3 +201,6 @@ class TaskDeleteView(DeleteView):
     model = Task
     context_object_name = "task"
     template_name = "teacher_tasks_delete.html"
+
+    def get_success_url(self):
+        return reverse("teacher_tasks", kwargs={"pk": self.object.class_id.id})
