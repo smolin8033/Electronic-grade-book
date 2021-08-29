@@ -42,6 +42,9 @@ class Student(models.Model):
         return "%s %s %s, address: %s " % \
                (self.first_name, self.second_name, self.family_name, self.address)
 
+    class Meta:
+        ordering = ("family_name",)
+
 
 class Teacher(models.Model):
     first_name = models.CharField(max_length=30)
