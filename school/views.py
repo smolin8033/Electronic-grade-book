@@ -186,6 +186,11 @@ class TaskCreateView(CreateView):
         initial["class_id"] = self.kwargs["pk"]
         return initial
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["pk"] = self.kwargs["pk"]
+        return context
+
 class TaskUpdateView(UpdateView):
     model = Task
     form_class = TaskForm
