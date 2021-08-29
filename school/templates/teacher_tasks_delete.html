@@ -6,6 +6,9 @@
     <h4>Are you sure you want to delete the task: {{ task }}</h4>
     <h4>Given to the class: {{ task.class_id }}?</h4>
 <input type="submit" value="Delete" />
-</form>
+</form> <br>
+    <form action="{% url 'tasks_update' pk=task.id %}">
+    <input type="submit" value="Cancel" />
+    </form>
 </center>
 {% endblock %}
