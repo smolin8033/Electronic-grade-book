@@ -18,4 +18,5 @@ urlpatterns = [
     path('teacher/<int:pk>/tasks/update/', views.TaskUpdateView.as_view(), name="tasks_update"),
     path('teacher/<int:pk>/tasks/delete/', views.TaskDeleteView.as_view(), name="tasks_delete"),
     path('manager/', views.manager_interface, name='manager_interface'),
+    path('manager/students/', views.StudentListView.as_view(), name="student_list"),
 ]
