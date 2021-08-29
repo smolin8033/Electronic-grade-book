@@ -204,3 +204,6 @@ class TaskDeleteView(DeleteView):
 
     def get_success_url(self):
         return reverse("teacher_tasks", kwargs={"pk": self.object.class_id.id})
+
+def manager_interface(request):
+    return render(request, "manager_interface.html")
