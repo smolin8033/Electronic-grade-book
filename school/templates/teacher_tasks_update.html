@@ -5,7 +5,7 @@
     <input type="submit" value="Go back to the tasks" />
 </form>
 <center>
-    Update the task:
+    Update or delete the task:
     <form action="." method="POST">{% csrf_token %}
         {{ form.as_p }}
         <input type="submit" value="Update" />
