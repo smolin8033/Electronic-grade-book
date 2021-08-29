@@ -1,5 +1,30 @@
 {% extends 'base.html' %}
 
 {% block content %}
-Success
+<center>
+    <p>These are all students of the school:</p>
+    <table border="1" bgcolor="f2f3f4" align="center">
+        <tr>
+            <th>First Name</th>
+            <th>Second Name</th>
+            <th>Family Name</th>
+            <th>Class</th>
+            <th>Type of Class</th>
+            <th>Birthday</th>
+            <th>Action</th>
+        </tr>
+        {% for student in student_list %}
+        <tr>
+            <td>{{student.first_name}}</td>
+            <td>{{student.second_name}}</td>
+            <td>{{student.family_name}}</td>
+            <td>{{student.class_id}}</td>
+            <td>{{student.class_id.type_of_class}}</td>
+            <td>{{student.birthday}}</td>
+            <td></td>
+        </tr>
+        {% endfor %}
+    </table>
+</center>
+
 {% endblock %}
