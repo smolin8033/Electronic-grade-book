@@ -23,7 +23,7 @@
             <td>{{ student.class_id }}</td>
             <td>{{ student.class_id.type_of_class }}</td>
             <td>{{ student.birthday }}</td>
-            <td></td>
+            <td><a href="{% url 'teacher_unrated' pk=student.id %}">View</a></td>
         </tr>
         {% endfor %}
     </table>
