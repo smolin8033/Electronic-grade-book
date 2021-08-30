@@ -1,5 +1,30 @@
 {% extends 'base.html' %}
 
 {% block content %}
-Success???
+<center>
+    <p>These are all teachers of the school:</p>
+    <table border="1" bgcolor="f2f3f4" align="center">
+        <tr>
+            <th>№</th>
+            <th>First Name</th>
+            <th>Second Name</th>
+            <th>Family Name</th>
+            <th>Birthday</th>
+            <th>Discipline</th>
+            <th>Action</th>
+        </tr>
+        {% for teacher in teacher_list %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ teacher.first_name }}</td>
+            <td>{{ teacher.second_name }}</td>
+            <td>{{ teacher.family_name }}</td>
+            <td>{{ teacher.birthday }}</td>
+            <td></td>
+            <td>View</td>
+        </tr>
+        {% endfor %}
+    </table>
+</center>
+
 {% endblock %}
