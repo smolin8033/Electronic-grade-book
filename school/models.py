@@ -59,6 +59,9 @@ class Teacher(models.Model):
         return "%s %s %s" % \
                (self.family_name, self.first_name, self.second_name)
 
+    class Meta:
+        ordering = ("family_name",)
+
 
 class Discipline(models.Model):
     name = models.CharField(max_length=40)
