@@ -20,7 +20,10 @@
             <td>{{ teacher.second_name }}</td>
             <td>{{ teacher.family_name }}</td>
             <td>{{ teacher.birthday }}</td>
-            <td></td>
+            <td>{% for discipline in teacher.discipline_set.all %}
+                {{ discipline }}<br>
+                {% endfor %}
+            </td>
             <td>View</td>
         </tr>
         {% endfor %}
