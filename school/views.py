@@ -218,3 +218,8 @@ class StudentListView(ListView):
     model = Student
     template_name = "manager_students.html"
     context_object_name = "student_list"
+
+class TeacherListView(ListView):
+    model = Teacher
+    template_name = "manager_teachers"
+    context_object_name = "teacher_list"
