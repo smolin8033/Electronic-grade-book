@@ -240,3 +240,8 @@ class DisciplineUpdateView(UpdateView):
     form_class = DisciplineForm
     template_name = "discipline_update.html"
     context_object_name = "discipline"
+
+class DisciplineDeleteView(DeleteView):
+    model = Discipline
+    template_name = "discipline_delete"
+    context_object_name = "discipline"
