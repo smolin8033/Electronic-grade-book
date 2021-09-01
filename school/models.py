@@ -74,7 +74,7 @@ class Discipline(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse("manager_teachers")
+        return reverse("teacher_list")
 
 
 class Task(models.Model):
