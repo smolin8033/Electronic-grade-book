@@ -223,3 +223,7 @@ class TeacherListView(ListView):
     model = Teacher
     template_name = "manager_teachers.html"
     context_object_name = "teacher_list"
+
+class DisciplineCreateView(CreateView):
+    template_name = "discipline_create.html"
+    form_class = DisciplineForm
