@@ -10,7 +10,7 @@ from .models import (
     Mark,
     Teacher
 )
-from.forms import MarkForm, TaskForm
+from.forms import MarkForm, TaskForm, DisciplineForm
 
 
 def test_view(request):
