@@ -236,6 +236,7 @@ class DisciplineCreateView(CreateView):
         return initial
 
 class DisciplineUpdateView(UpdateView):
+    model = Discipline
     form_class = DisciplineForm
     template_name = "discipline_update.html"
     context_object_name = "discipline"
