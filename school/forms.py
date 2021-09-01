@@ -56,8 +56,8 @@ class TaskForm(forms.ModelForm):
 class DisciplineForm(forms.ModelForm):
     name = forms.CharField(max_length=40)
     type = forms.CharField(max_length=20)
-    class_id = forms.ModelChoiceField(queryset=Class.objects.all())
-    teacher_id = forms.ModelChoiceField(queryset=Teacher.objects.all())
+    class_id = forms.ModelChoiceField(label="Choose a class", queryset=Class.objects.all())
+    teacher_id = forms.ModelChoiceField(label="Choose a teacher", queryset=Teacher.objects.all())
     hours = forms.IntegerField()
 
     class Meta:
