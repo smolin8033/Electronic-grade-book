@@ -233,3 +233,8 @@ class DisciplineCreateView(CreateView):
         initial["class_id"] = Class.objects.all()[0]
         initial["teacher_id"] = Teacher.objects.all()[0]
         return initial
+
+class DisciplineUpdateView(UpdateView):
+    form_class = DisciplineForm
+    template_name = "discipline_update.html"
+    context_object_name = "discipline"
