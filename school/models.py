@@ -73,6 +73,9 @@ class Discipline(models.Model):
     def __str__(self):
         return self.name
 
+    def get_absolute_url(self):
+        return reverse("manager_teachers")
+
 
 class Task(models.Model):
     task_name = models.CharField(max_length=100)
