@@ -21,4 +21,5 @@ urlpatterns = [
     path('manager/students/', views.StudentListView.as_view(), name="student_list"),
     path('manager/teachers/', views.TeacherListView.as_view(), name="teacher_list"),
     path('manager/discipline/create/', views.DisciplineCreateView.as_view(), name="discipline_create"),
+    path('manager/discipline/update/', views.DisciplineUpdateView.as_view(), name="discipline_update"),
 ]
