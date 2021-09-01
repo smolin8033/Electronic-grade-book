@@ -227,3 +227,10 @@ class TeacherListView(ListView):
 class DisciplineCreateView(CreateView):
     template_name = "discipline_create.html"
     form_class = DisciplineForm
+
+    def get_initial(self, *args, **kwargs):
+        initial = super(DisciplineCreateView, self).get_initial(**kwargs)
+        initial["class_id"] = Class.objects.all()[0]
+        initial["teacher_id"] = Teacher.objects.all()[0]
+        print(initial)
+        return initial
