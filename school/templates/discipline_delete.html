@@ -1,5 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
-Success???
+<center>
+  <form action="." method="POST">{% csrf_token %}
+  <h4>Are you sure you want to delete the discipline: {{ discipline }}</h4>
+  <h4>Of the teacher: {{ discipline.teacher_id }}?</h4>
+  <input type="submit" value="Delete" />
+  </form>
+</center>
 {% endblock %}
