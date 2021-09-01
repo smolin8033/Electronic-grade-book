@@ -232,5 +232,4 @@ class DisciplineCreateView(CreateView):
         initial = super(DisciplineCreateView, self).get_initial(**kwargs)
         initial["class_id"] = Class.objects.all()[0]
         initial["teacher_id"] = Teacher.objects.all()[0]
-        print(initial)
         return initial
