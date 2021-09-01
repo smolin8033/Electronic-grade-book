@@ -21,7 +21,7 @@
             <td>{{ teacher.family_name }}</td>
             <td>{{ teacher.birthday }}</td>
             <td>{% for discipline in teacher.discipline_set.all %}
-                {{ discipline }}<br>
+                <a href="{% url 'discipline_update' pk=discipline.id %}">{{ discipline }}</a><br>
                 {% endfor %}
                 <a href="{% url 'discipline_create' %}">Add discipline</a>
             </td>
