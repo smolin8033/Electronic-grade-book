@@ -245,3 +245,6 @@ class DisciplineDeleteView(DeleteView):
     model = Discipline
     template_name = "discipline_delete.html"
     context_object_name = "discipline"
+
+    def get_success_url(self):
+        return reverse("teacher_list")
