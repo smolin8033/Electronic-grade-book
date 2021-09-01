@@ -59,3 +59,13 @@ class DisciplineForm(forms.ModelForm):
     class_id = forms.ModelChoiceField(queryset=Class.objects.all())
     teacher_id = forms.ModelChoiceField(queryset=Teacher.objects.all())
     hours = forms.IntegerField()
+
+    class Meta:
+        model = Discipline
+        fields = [
+            "name",
+            "type",
+            "class_id",
+            "teacher_id",
+            "hours"
+        ]
