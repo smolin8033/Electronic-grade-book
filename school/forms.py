@@ -15,7 +15,6 @@ class MarkForm(forms.ModelForm):
             "final_score",
         ]
 
-
 class TaskForm(forms.ModelForm):
     task_name = forms.CharField(max_length=100)
     class_id = forms.ModelChoiceField(
@@ -53,3 +52,10 @@ class TaskForm(forms.ModelForm):
             "start_date": DateInput(),
             "end_date": DateInput(),
         }
+
+class DisciplineForm(forms.ModelForm):
+    name = forms.CharField(max_length=40)
+    type = forms.CharField(max_length=20)
+    class_id = forms.ModelChoiceField(queryset=Class.objects.all())
+    teacher_id = forms.ModelChoiceField(queryset=Teacher.objects.all())
+    hours = forms.IntegerField()
