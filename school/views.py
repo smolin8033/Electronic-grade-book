@@ -8,7 +8,8 @@ from .models import (
     Class,
     Task,
     Mark,
-    Teacher
+    Teacher,
+    Discipline
 )
 from.forms import MarkForm, TaskForm, DisciplineForm
 
