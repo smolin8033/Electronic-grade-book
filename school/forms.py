@@ -69,3 +69,30 @@ class DisciplineForm(forms.ModelForm):
             "teacher_id",
             "hours"
         ]
+
+class TeacherForm(forms.ModelForm):
+    GENDER_CHOICES = (
+        ("1", "Male"),
+        ("2", "Female")
+    )
+    first_name = forms.CharField(max_length=30)
+    second_name = forms.CharField(max_length=30)
+    family_name = forms.CharField(max_length=30)
+    address = forms.CharField(max_length=40)
+    salary = forms.CharField(max_length=15)
+    gender = forms.ChoiceField(choices=GENDER_CHOICES)
+
+    class Meta:
+        model = Teacher
+        fields = [
+            "first_name",
+            "second_name",
+            "family_name",
+            "address",
+            "birthday",
+            "salary",
+            "gender"
+        ]
+        widgets = {
+            "birthday": DateInput()
+        }
