@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<form action="{{ teacher.get_absolute_url }}">
+<input type="submit" value="Go back to the previous page" />
+</form>
 <center>
     <form action="." method="POST">{% csrf_token %}
     {{ form.as_p }}
