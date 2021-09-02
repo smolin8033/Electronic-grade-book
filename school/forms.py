@@ -72,8 +72,8 @@ class DisciplineForm(forms.ModelForm):
 
 class TeacherForm(forms.ModelForm):
     GENDER_CHOICES = (
-        ("1", "Male"),
-        ("2", "Female")
+        ("Male", "Male"),
+        ("Female", "Female")
     )
     first_name = forms.CharField(max_length=30)
     second_name = forms.CharField(max_length=30)
