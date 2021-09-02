@@ -27,7 +27,7 @@
                 {% endfor %}
                 <a href="{% url 'discipline_create' %}">Add discipline</a>
             </td>
-            <td>View</td>
+            <td><a href="{% url 'teacher_update' pk=teacher.id %}">View</a></td>
         </tr>
         {% endfor %}
     </table>
