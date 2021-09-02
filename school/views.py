@@ -252,3 +252,9 @@ class DisciplineDeleteView(DeleteView):
 class TeacherCreateView(CreateView):
     template_name = "teacher_create.html"
     form_class = TeacherForm
+
+class TeacherUpdateView(UpdateView):
+    model = Teacher
+    form_class = TeacherForm
+    template_name = "teacher_update.html"
+    context_object_name = "teacher"
