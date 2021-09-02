@@ -258,3 +258,8 @@ class TeacherUpdateView(UpdateView):
     form_class = TeacherForm
     template_name = "teacher_update.html"
     context_object_name = "teacher"
+
+class TeacherDeleteView(DeleteView):
+    model = Teacher
+    template_name = "teacher_delete.html"
+    context_object_name = "teacher"
