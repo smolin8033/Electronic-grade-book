@@ -263,3 +263,6 @@ class TeacherDeleteView(DeleteView):
     model = Teacher
     template_name = "teacher_delete.html"
     context_object_name = "teacher"
+
+    def get_success_url(self):
+        return reverse("teacher_list")
