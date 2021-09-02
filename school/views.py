@@ -248,3 +248,7 @@ class DisciplineDeleteView(DeleteView):
 
     def get_success_url(self):
         return reverse("teacher_list")
+
+class TeacherCreateView(CreateView):
+    template_name = "teacher_create.html"
+    form_class = TeacherForm
