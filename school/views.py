@@ -11,7 +11,7 @@ from .models import (
     Teacher,
     Discipline
 )
-from.forms import MarkForm, TaskForm, DisciplineForm
+from.forms import MarkForm, TaskForm, DisciplineForm, TeacherForm
 
 
 def test_view(request):
