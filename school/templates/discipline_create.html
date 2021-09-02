@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<form action="{% url 'teacher_list' %}">
+<input type="submit" value="Go back to the previous page" />
+</form>
 <center>
     Add new discipline:
     <form action="." method="POST">{% csrf_token %}
