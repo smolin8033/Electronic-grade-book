@@ -24,6 +24,6 @@ urlpatterns = [
     path('manager/discipline/create/', views.DisciplineCreateView.as_view(), name="discipline_create"),
     path('manager/discipline/<int:pk>/update/', views.DisciplineUpdateView.as_view(), name="discipline_update"),
     path('manager/discipline/<int:pk>/delete/', views.DisciplineDeleteView.as_view(), name="discipline_delete"),
-    path('manager/teacher/create/', views.TeacherCreateView.as_view(), name="teacher_create"),
-    path('manager/teacher/<int:pk>/update/', views.TeacherUpdateView.as_view(), name="teacher_update"),
+    path('manager/teachers/create/', views.TeacherCreateView.as_view(), name="teacher_create"),
+    path('manager/teachers/<int:pk>/update/', views.TeacherUpdateView.as_view(), name="teacher_update"),
 ]
