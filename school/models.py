@@ -59,6 +59,9 @@ class Teacher(models.Model):
         return "%s %s %s" % \
                (self.family_name, self.first_name, self.second_name)
 
+    def get_absolute_url(self):
+        return reverse("teacher_list")
+
     class Meta:
         ordering = ("family_name",)
 
