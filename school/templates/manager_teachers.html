@@ -30,7 +30,10 @@
             <td><a href="{% url 'teacher_update' pk=teacher.id %}">View</a></td>
         </tr>
         {% endfor %}
-    </table>
+    </table> <br>
+    <form action="{% url 'teacher_create' %}">
+    <input type="submit" value="Add new teacher" />
+    </form>
 </center>
 
 {% endblock %}
