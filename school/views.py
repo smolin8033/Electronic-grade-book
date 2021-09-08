@@ -272,7 +272,7 @@ def manager_choice(request):
     if request.method == "POST":
         pk = request.POST.get("input1")
         if "students" in request.POST:
-            return redirect("class_students", pk=pk)
+            return redirect("manager_class", pk=pk)
         else:
             return redirect("teacher_tasks", pk=pk)
     context = {
@@ -280,5 +280,5 @@ def manager_choice(request):
     }
     return render(request, "teacher_interface.html", context)
 
-def manager_class(request):
+def manager_class(request, pk):
     return render(request, "manager_class.html")
