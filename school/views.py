@@ -266,3 +266,6 @@ class TeacherDeleteView(DeleteView):
 
     def get_success_url(self):
         return reverse("teacher_list")
+
+def manager_choice(request):
+    return render(request, "manager_choice")
