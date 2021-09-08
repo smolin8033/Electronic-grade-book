@@ -268,4 +268,14 @@ class TeacherDeleteView(DeleteView):
         return reverse("teacher_list")
 
 def manager_choice(request):
-    return render(request, "manager_choice.html")
+    class_queryset = Class.objects.order_by("class_number", "group")
+    if request.method == "POST":
+        pk = request.POST.get("input1")
+        if "students" in request.POST:
+            return redirect("class_students", pk=pk)
+        else:
+            return redirect("teacher_tasks", pk=pk)
+    context = {
+        "class_queryset": class_queryset,
+    }
+    return render(request, "teacher_interface.html", context)
