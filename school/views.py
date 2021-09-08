@@ -268,4 +268,4 @@ class TeacherDeleteView(DeleteView):
         return reverse("teacher_list")
 
 def manager_choice(request):
-    return render(request, "manager_choice")
+    return render(request, "manager_choice.html")
