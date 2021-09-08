@@ -73,7 +73,7 @@ class Discipline(models.Model):
     class_id = models.ForeignKey(Class, on_delete=models.CASCADE, default="")
     teacher_id = models.ForeignKey(Teacher, on_delete=models.CASCADE, default="")
     hours = models.IntegerField()
-    slug = models.SlugField(unique=False, default="some-slug")
+    slug = models.SlugField(null=False, unique=True)
 
     def save(self, *args, **kwargs):
         self.slug = slugify("{obj.name}-of-{obj.teacher_id}".format(obj=self))
