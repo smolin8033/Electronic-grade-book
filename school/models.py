@@ -72,6 +72,7 @@ class Discipline(models.Model):
     class_id = models.ForeignKey(Class, on_delete=models.CASCADE, default="")
     teacher_id = models.ForeignKey(Teacher, on_delete=models.CASCADE, default="")
     hours = models.IntegerField()
+    slug = models.SlugField(unique=False, default="some-slug")
 
     def __str__(self):
         return self.name
