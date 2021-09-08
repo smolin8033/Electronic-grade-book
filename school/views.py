@@ -281,4 +281,12 @@ def manager_choice(request):
     return render(request, "manager_choice.html", context)
 
 def manager_class(request, pk):
-    return render(request, "manager_class.html")
+    chosen_class = get_object_or_404(Class, pk=pk)
+    chosen_class_total = Student.objects.filter(class_id=chosen_class).count()
+    chosen_class_queryset = Student.objects.filter(class_id=chosen_class)
+    context = {
+        "chosen_class": chosen_class,
+        "chosen_class_total": chosen_class_total,
+        "chosen_class_queryset": chosen_class_queryset,
+    }
+    return render(request, "manager_class.html", context)
