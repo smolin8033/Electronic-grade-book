@@ -1,5 +1,36 @@
 {% extends 'base.html' %}
 
 {% block content %}
-Success?
+<br>
+<form action="{% url 'teacher_interface' %}">
+    <input type="submit" value="Go back to choose again" />
+</form>
+<br>
+<p align="center">
+    These are the students from class: {{ chosen_class.class_number }}
+    group: {{ chosen_class.group }}<br><br>
+    This is {{ chosen_class.type_of_class }} class - with {{ chosen_class_total }} students
+</p>
+<table border="1" bgcolor="f2f3f4" align="center">
+<tr>
+    <th>First Name</th>
+    <th>Second Name</th>
+    <th>Family Name</th>
+    <th>Birthday</th>
+    <th>Action</th>
+</tr>
+    {% for student in chosen_class_queryset %}
+<tr>
+    <td>{{ student.first_name }}</td>
+    <td>{{ student.second_name }}</td>
+    <td>{{ student.family_name }}</td>
+    <td>{{ student.birthday }}</td>
+    <td>
+        <a href="{% url 'teacher_unrated' pk=student.id %}">
+            View
+        </a>
+    </td>
+</tr>
+    {% endfor %}
+</table>
 {% endblock %}
