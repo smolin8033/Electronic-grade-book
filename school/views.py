@@ -279,3 +279,6 @@ def manager_choice(request):
         "class_queryset": class_queryset,
     }
     return render(request, "teacher_interface.html", context)
+
+def manager_class(request):
+    return render(request, "manager_class.html")
