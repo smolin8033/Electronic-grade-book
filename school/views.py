@@ -278,7 +278,7 @@ def manager_choice(request):
     context = {
         "class_queryset": class_queryset,
     }
-    return render(request, "teacher_interface.html", context)
+    return render(request, "manager_choice.html", context)
 
 def manager_class(request, pk):
     return render(request, "manager_class.html")
