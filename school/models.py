@@ -1,5 +1,6 @@
 from django.db import models
 from django.shortcuts import reverse
+from django.template.defaultfilters import slugify
 
 
 class TypeOfClass(models.Model):
@@ -73,6 +74,10 @@ class Discipline(models.Model):
     teacher_id = models.ForeignKey(Teacher, on_delete=models.CASCADE, default="")
     hours = models.IntegerField()
     slug = models.SlugField(unique=False, default="some-slug")
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name)
+        super(Discipline, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.name
