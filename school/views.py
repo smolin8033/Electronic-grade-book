@@ -315,3 +315,6 @@ class StudentDeleteView(DeleteView):
     model = Student
     template_name = "student_delete.html"
     context_object_name = "student"
+
+    def get_success_url(self):
+        return reverse("manager_class", kwargs={"pk": self.object.class_id.id})
