@@ -305,3 +305,8 @@ class StudentCreateView(CreateView):
         initial = super(StudentCreateView, self).get_initial(**kwargs)
         initial["class_id"] = Class.objects.all()[0]
         return initial
+
+    def get_context_data(self, **kwargs):
+        context = super(StudentCreateView, self).get_context_data(**kwargs)
+        context["pk"] = self.kwargs["pk"]
+        return context
