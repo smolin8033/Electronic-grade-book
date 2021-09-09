@@ -102,7 +102,7 @@ class StudentForm(forms.ModelForm):
     second_name = forms.CharField(max_length=30)
     family_name = forms.CharField(max_length=30)
     address = forms.CharField(max_length=40)
-    class_id = forms.ModelChoiceField(queryset=Class.objects.all())
+    class_id = forms.ModelChoiceField(label="Choose a class", queryset=Class.objects.all())
 
     class Meta:
         model = Student
