@@ -29,4 +29,5 @@ urlpatterns = [
     path('manager/teachers/<int:pk>/delete/', views.TeacherDeleteView.as_view(), name="teacher_delete"),
     path('manager/choice/', views.manager_choice, name="manager_choice"),
     path('manager/<int:pk>/class/', views.manager_class, name="manager_class"),
+    path('manager/student/create/', views.StudentCreateView.as_view(), name="student_create"),
 ]
