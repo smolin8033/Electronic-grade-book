@@ -96,3 +96,24 @@ class TeacherForm(forms.ModelForm):
         widgets = {
             "birthday": DateInput()
         }
+
+class StudentForm(forms.ModelForm):
+    first_name = forms.CharField(max_length=30)
+    second_name = forms.CharField(max_length=30)
+    family_name = forms.CharField(max_length=30)
+    address = forms.CharField(max_length=40)
+    class_id = forms.ModelChoiceField(queryset=Class.objects.all())
+
+    class Meta:
+        model = Student
+        fields = [
+            "first_name",
+            "second_name",
+            "family_name",
+            "address",
+            "birthday",
+            "class_id"
+        ]
+        widgets = {
+            "birthday": DateInput()
+        }
