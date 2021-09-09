@@ -313,5 +313,5 @@ class StudentCreateView(CreateView):
 
 class StudentDeleteView(DeleteView):
     model = Student
-    template_name = "student_delete"
+    template_name = "student_delete.html"
     context_object_name = "student"
