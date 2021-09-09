@@ -310,3 +310,8 @@ class StudentCreateView(CreateView):
         context = super(StudentCreateView, self).get_context_data(**kwargs)
         context["pk"] = self.kwargs["pk"]
         return context
+
+class StudentDeleteView(DeleteView):
+    model = Student
+    template_name = "student_delete"
+    context_object_name = "student"
