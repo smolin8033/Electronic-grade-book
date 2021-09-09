@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<form action="{% url 'manager_class' pk=pk %}">
+    <input type="submit" value="Go back to choose again" />
+</form>
 <center>
     Add new student:
     <form action="." method="POST">{% csrf_token %}
