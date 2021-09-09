@@ -300,3 +300,8 @@ def manager_class(request, pk):
 class StudentCreateView(CreateView):
     template_name = "student_create.html"
     form_class = StudentForm
+
+    def get_initial(self, *args, **kwargs):
+        initial = super(StudentCreateView, self).get_initial(**kwargs)
+        initial["class_id"] = Class.objects.all()[0]
+        return initial
