@@ -1,5 +1,5 @@
 from django import forms
-from .models import Mark, Task, Class, Teacher, Discipline
+from .models import Mark, Task, Class, Teacher, Discipline, Student
 
 
 class DateInput(forms.DateInput):
