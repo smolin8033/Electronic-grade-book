@@ -296,3 +296,7 @@ def manager_class(request, pk):
         "chosen_class_queryset": chosen_class_queryset,
     }
     return render(request, "manager_class.html", context)
+
+class StudentCreateView(CreateView):
+    template_name = "student_create.html"
+    form_class = StudentForm
