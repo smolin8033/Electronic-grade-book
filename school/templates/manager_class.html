@@ -34,7 +34,7 @@
     {% endfor %}
 </table> <br>
 <center>
-<form action="{% url 'student_create' %}">
+<form action="{% url 'student_create' pk=chosen_class.id %}">
     <input type="submit" value="Add new student" />
 </form>
 </center>
