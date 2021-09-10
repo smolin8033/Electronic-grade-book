@@ -99,7 +99,7 @@ def teacher_all_rated(request, pk):
     if "to_unrated_tasks" in request.POST:
         return redirect("teacher_unrated", pk=student.id)
     elif "to_current_tasks" in request.POST:
-        return redirect("teacher_rated", pk=student.id)
+        return redirect("rated", pk=student.id)
     context = {
         "student": student,
         "current_date": current_date,
@@ -114,7 +114,7 @@ def teacher_unrated(request, pk):
     )[:10]
     current_date = datetime.datetime.now()
     if "to_rated_tasks" in request.POST:
-        return redirect("teacher_rated", pk=student.id)
+        return redirect("rated", pk=student.id)
     elif "to_all_unrated_tasks" in request.POST:
         return redirect("all_unrated", pk=student.id)
     context = {
@@ -131,7 +131,7 @@ def teacher_all_unrated(request, pk):
     )
     current_date = datetime.datetime.now()
     if "to_rated_tasks" in request.POST:
-        return redirect("teacher_rated", pk=student.id)
+        return redirect("rated", pk=student.id)
     elif "to_unrated_tasks" in request.POST:
         return redirect("teacher_unrated", pk=student.id)
     context = {
@@ -165,7 +165,7 @@ class MarkUpdateView(UpdateView):
     template_name = "mark_update.html"
 
     def get_success_url(self):
-        return reverse("teacher_rated", kwargs={"pk": self.object.student_id.id})
+        return reverse("rated", kwargs={"pk": self.object.student_id.id})
 
 class MarkDeleteView(DeleteView):
     model = Mark
@@ -174,7 +174,7 @@ class MarkDeleteView(DeleteView):
     template_name = "mark_delete.html"
 
     def get_success_url(self):
-        return reverse("teacher_rated", kwargs={"pk": self.object.student_id.id})
+        return reverse("rated", kwargs={"pk": self.object.student_id.id})
 
 class TaskListView(ListView):
     model = Class
