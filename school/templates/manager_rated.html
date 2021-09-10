@@ -32,12 +32,5 @@ Today is: {{current_date|date:"M. d, Y"}}
     </tr>
     {% endfor %}
 </table><br>
-<center>
-    <form method="POST">{% csrf_token %}
-        <button type="submit" name="to_rated_tasks">Show rated tasks</button>
-    </form> <br>
-    <form method="POST">{% csrf_token %}
-        <button type="submit" name="to_all_unrated_tasks">See all tasks</button>
-    </form>
-</center>
+
 {% endblock %}
