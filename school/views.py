@@ -334,4 +334,4 @@ def manager_unrated(request, pk):
         "current_date": current_date,
         "tasks_queryset": tasks_queryset,
     }
-    return render(request, "teacher_unrated.html", context)
+    return render(request, "manager_unrated.html", context)
