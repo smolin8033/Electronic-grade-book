@@ -9,25 +9,19 @@ Today is: {{current_date|date:"M. d, Y"}}
 <form action="{% url 'manager_class' pk=student.class_id.id %}">
     <input type="submit" value="Go back to choose again" />
 </form>
+<center>These are the marks for the selected student:</center> <br>
 <table border="1" bgcolor="f2f3f4" align="center">
-    <caption><strong>The current tasks are:</strong></caption>
     <tr>
         <th>№</th>
         <th>Task Name</th>
-        <th>Discipline</th>
-        <th>Start Date</th>
-        <th>End Date</th>
         <th>Mark</th>
     </tr>
-    {% for task in tasks_queryset %}
+    {% for mark in marks_queryset %}
     <tr>
         <td>{{ forloop.counter }}</td>
-        <td>{{ task.task_name }}</td>
-        <td>{{ task.discipline_id }}</td>
-        <td>{{ task.start_date|date:"N. d, Y" }}</td>
-        <td>{{ task.end_date|date:"N. d, Y" }}</td>
+        <td>{{ mark.task_id }}</td>
         <td>
-            <a href="{% url 'mark_add' pk=student.id rel_task=task.id %}">Add mark</a>
+            <a>{{ mark }}</a>
         </td>
     </tr>
     {% endfor %}
