@@ -325,10 +325,6 @@ def manager_rated(request, pk):
         ~Q(mark__student_id=student)
     )[:10]
     current_date = datetime.datetime.now()
-    if "to_rated_tasks" in request.POST:
-        return redirect("rated", pk=student.id)
-    elif "to_all_unrated_tasks" in request.POST:
-        return redirect("all_unrated", pk=student.id)
     context = {
         "student": student,
         "current_date": current_date,
