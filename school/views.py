@@ -318,3 +318,20 @@ class StudentDeleteView(DeleteView):
 
     def get_success_url(self):
         return reverse("manager_class", kwargs={"pk": self.object.class_id.id})
+
+def manager_unrated(request, pk):
+    student = Student.objects.get(pk=pk)
+    tasks_queryset = Task.objects.filter(class_id=student.class_id).filter(
+        ~Q(mark__student_id=student)
+    )[:10]
+    current_date = datetime.datetime.now()
+    if "to_rated_tasks" in request.POST:
+        return redirect("rated", pk=student.id)
+    elif "to_all_unrated_tasks" in request.POST:
+        return redirect("all_unrated", pk=student.id)
+    context = {
+        "student": student,
+        "current_date": current_date,
+        "tasks_queryset": tasks_queryset,
+    }
+    return render(request, "teacher_unrated.html", context)
