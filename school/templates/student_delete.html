@@ -3,7 +3,7 @@
 {% block content %}
 <center>
     <form action="." method="POST">{% csrf_token %}
-    <h4>Are you sure to delete the student: {{ student }}</h4>
+    <h4>Are you sure to delete the student: {{ student.get_full_name }}</h4>
     <h4>Of the class: {{ student.class_id }}?</h4>
     <input type="submit" value="Delete" />
     </form> <br>
