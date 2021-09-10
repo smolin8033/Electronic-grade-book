@@ -319,7 +319,7 @@ class StudentDeleteView(DeleteView):
     def get_success_url(self):
         return reverse("manager_class", kwargs={"pk": self.object.class_id.id})
 
-def manager_unrated(request, pk):
+def manager_rated(request, pk):
     student = Student.objects.get(pk=pk)
     tasks_queryset = Task.objects.filter(class_id=student.class_id).filter(
         ~Q(mark__student_id=student)
@@ -334,4 +334,4 @@ def manager_unrated(request, pk):
         "current_date": current_date,
         "tasks_queryset": tasks_queryset,
     }
-    return render(request, "manager_unrated.html", context)
+    return render(request, "manager_rated.html", context)
