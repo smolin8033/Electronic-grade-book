@@ -116,7 +116,7 @@ def teacher_unrated(request, pk):
     if "to_rated_tasks" in request.POST:
         return redirect("teacher_rated", pk=student.id)
     elif "to_all_unrated_tasks" in request.POST:
-        return redirect("teacher_all_unrated", pk=student.id)
+        return redirect("all_unrated", pk=student.id)
     context = {
         "student": student,
         "current_date": current_date,
