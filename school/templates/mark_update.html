@@ -9,7 +9,7 @@ Change mark:
 {{ form.as_p }}
 <input type="submit" value="Update"/>
 </form> <br>
-<form action="{% url 'teacher_rated' pk=mark.student_id.id %}">
+<form action="{% url 'rated' pk=mark.student_id.id %}">
     <input type="submit" value="Choose another task" />
 </form> <br>
 <form action="{% url 'mark_delete' pk=mark.id %}">
