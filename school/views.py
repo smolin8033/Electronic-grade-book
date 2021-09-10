@@ -321,13 +321,11 @@ class StudentDeleteView(DeleteView):
 
 def manager_rated(request, pk):
     student = Student.objects.get(pk=pk)
-    tasks_queryset = Task.objects.filter(class_id=student.class_id).filter(
-        ~Q(mark__student_id=student)
-    )[:10]
+    marks_queryset = Mark.objects.filter(student_id=student)
     current_date = datetime.datetime.now()
     context = {
         "student": student,
         "current_date": current_date,
-        "tasks_queryset": tasks_queryset,
+        "marks_queryset": marks_queryset,
     }
     return render(request, "manager_rated.html", context)
