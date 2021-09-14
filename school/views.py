@@ -18,7 +18,8 @@ from.forms import (
     TaskForm,
     DisciplineForm,
     TeacherForm,
-    StudentForm
+    StudentForm,
+    LoginForm
 )
 
 
