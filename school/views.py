@@ -54,7 +54,7 @@ def student_current(request):
     return render(request, "student_current.html", context)
 
 def student_all(request):
-    student = Student.objects.get(id=4)
+    student = Student.objects.get(id=3)
     tasks_queryset = Task.objects.order_by('end_date')
     marks_queryset = Mark.objects.all()
     current_date = datetime.datetime.now()
