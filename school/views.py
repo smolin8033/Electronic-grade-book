@@ -1,6 +1,7 @@
 import datetime
 from django.contrib.auth import authenticate, login
 from django.db.models import Q
+from django.http import HttpResponse
 from django.shortcuts import (render, redirect,
 get_object_or_404, reverse)
 from django.views.generic import UpdateView, DeleteView, ListView, CreateView
