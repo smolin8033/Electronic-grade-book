@@ -24,7 +24,19 @@ from.forms import (
 
 
 def login_view(request):
-    return render(request, "login.html")
+    if request.method == "POST":
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            user = authenticate(username=cd["username"], password=cd["password"])
+            if user is not None:
+                login(request, user)
+                return HttpResponse("Authenticated successfully")
+            else:
+                return HttpResponse("Invalid login")
+    else:
+        form = LoginForm()
+    return render(request, "login.html", {"form": form})
 
 def student_current(request):
     student = Student.objects.get(id=4)
