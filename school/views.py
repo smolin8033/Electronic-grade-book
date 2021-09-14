@@ -22,7 +22,7 @@ from.forms import (
 )
 
 
-def test_view(request):
+def login_view(request):
     return render(request, "login.html")
 
 def student_current(request):
