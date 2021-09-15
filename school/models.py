@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 from django.shortcuts import reverse
 from django.template.defaultfilters import slugify
@@ -35,6 +36,7 @@ class Student(models.Model):
     address = models.CharField(max_length=60)
     birthday = models.DateField()
     class_id = models.ForeignKey(Class, on_delete=models.CASCADE, default="")
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, on_delete=models.PROTECT)
 
     def get_full_name(self):
         return "%s %s %s" % (self.first_name, self.second_name, self.family_name)
