@@ -60,6 +60,7 @@ class Teacher(models.Model):
     birthday = models.DateField()
     salary = models.CharField(max_length=50)  # add money form
     gender = models.CharField(max_length=20)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, on_delete=models.PROTECT)
 
     def __str__(self):
         return "%s %s %s" % \
