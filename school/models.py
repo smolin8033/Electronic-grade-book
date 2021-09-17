@@ -125,4 +125,7 @@ class Mark(models.Model):
     def __str__(self):
         return str(self.final_score)
 
+    class Meta:
+        default_permissions = ()
+
 # Create your models here.
