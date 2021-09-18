@@ -38,10 +38,10 @@ def login_view(request):
         form = LoginForm()
     return render(request, "login.html", {"form": form})
 
-def student_current(request):
+def student_unrated(request):
     student = get_object_or_404(Student, user=request.user)
     tasks_queryset = Task.objects.filter(
-        Q(class_id=student.class_id) &
+        Q(class_id=student.class_id) |
         Q(mark__student_id=student)
     )[:10]
     current_date = datetime.datetime.now()
@@ -57,7 +57,7 @@ def student_current(request):
 def student_all(request):
     student = get_object_or_404(Student, user=request.user)
     tasks_queryset = Task.objects.filter(
-        Q(class_id=student.class_id) &
+        Q(class_id=student.class_id) |
         Q(mark__student_id=student)
     )
     current_date = datetime.datetime.now()
