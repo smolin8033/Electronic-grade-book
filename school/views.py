@@ -46,7 +46,7 @@ def student_current(request):
     )[:10]
     current_date = datetime.datetime.now()
     if "btnform1" in request.POST:
-        return redirect("/school/student/all/")
+        return redirect('student_all')
     context = {
         "student": student,
         "current_date": current_date,
