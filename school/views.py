@@ -31,7 +31,7 @@ def login_view(request):
             user = authenticate(username=cd["username"], password=cd["password"])
             if user is not None:
                 login(request, user)
-                return redirect('student_current')
+                return redirect('student_unrated')
             else:
                 return HttpResponse("Invalid login")
     else:
@@ -52,7 +52,7 @@ def student_unrated(request):
         "current_date": current_date,
         "tasks_queryset": tasks_queryset,
     }
-    return render(request, "student_current.html", context)
+    return render(request, "student_unrated.html", context)
 
 def student_all(request):
     student = get_object_or_404(Student, user=request.user)
@@ -62,7 +62,7 @@ def student_all(request):
     )
     current_date = datetime.datetime.now()
     if "btnform2" in request.POST:
-        return redirect('student_current')
+        return redirect('student_unrated')
     context = {
         "student": student,
         "current_date": current_date,
