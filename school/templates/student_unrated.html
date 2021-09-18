@@ -24,7 +24,7 @@ Today is: {{current_date|date:"M. d, Y"}}
         <td>{{ task.discipline_id }}</td>
         <td>{{ task.start_date|date:"N. d, Y" }}</td>
         <td>{{ task.end_date|date:"N. d, Y" }}</td>
-        <td></td>
+        <td>No mark</td>
     {% endfor %}
 </table><br>
     <form method="POST">{% csrf_token %}{{ form.as_p }}
