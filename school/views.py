@@ -46,7 +46,7 @@ def student_unrated(request):
     )[:10]
     current_date = datetime.datetime.now()
     if "btnform1" in request.POST:
-        return redirect('student_all')
+        return redirect('student_rated')
     context = {
         "student": student,
         "current_date": current_date,
@@ -54,7 +54,7 @@ def student_unrated(request):
     }
     return render(request, "student_unrated.html", context)
 
-def student_all(request):
+def student_rated(request):
     student = get_object_or_404(Student, user=request.user)
     tasks_queryset = Task.objects.filter(
         Q(class_id=student.class_id) |
@@ -68,7 +68,7 @@ def student_all(request):
         "current_date": current_date,
         "tasks_queryset": tasks_queryset,
     }
-    return render(request, "student_all.html", context)
+    return render(request, "student_rated.html", context)
 
 def teacher_interface(request):
     class_queryset = Class.objects.order_by("class_number", "group")
