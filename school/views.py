@@ -40,7 +40,10 @@ def login_view(request):
 
 def student_current(request):
     student = get_object_or_404(Student, user=request.user)
-    tasks_queryset = Task.objects.all()[:10]
+    tasks_queryset = Task.objects.filter(
+        Q(class_id=student.class_id) &
+        Q(mark__student_id=student)
+    )[:10]
     current_date = datetime.datetime.now()
     if "btnform1" in request.POST:
         return redirect("/school/student/all/")
