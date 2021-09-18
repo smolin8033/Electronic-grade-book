@@ -6,9 +6,6 @@
 <p>Birthday: {{student.birthday}}<br><br>
 Today is: {{current_date|date:"M. d, Y"}}
 </p>
-<form action="{% url 'class_students' pk=student.class_id.id %}">
-    <input type="submit" value="Go back to choose again" />
-</form>
 <table border="1" bgcolor="f2f3f4" align="center">
     <caption><strong>The current tasks are:</strong></caption>
     <tr>
@@ -26,18 +23,12 @@ Today is: {{current_date|date:"M. d, Y"}}
         <td>{{ task.discipline_id }}</td>
         <td>{{ task.start_date|date:"N. d, Y" }}</td>
         <td>{{ task.end_date|date:"N. d, Y" }}</td>
-        <td>
-            <a href="{% url 'mark_add' pk=student.id rel_task=task.id %}">Add mark</a>
-        </td>
-    </tr>
+        <td></td>
     {% endfor %}
 </table><br>
 <center>
-    <form method="POST">{% csrf_token %}
-        <button type="submit" name="to_rated_tasks">Show rated tasks</button>
-    </form> <br>
-    <form method="POST">{% csrf_token %}
-        <button type="submit" name="to_unrated_tasks">See current tasks</button>
+    <form method="POST">{% csrf_token %}{{ form.as_p }}
+        <button type="submit" name="btnform2">Show rated tasks</button>
     </form>
 </center>
 {% endblock %}
