@@ -39,21 +39,19 @@ def login_view(request):
     return render(request, "login.html", {"form": form})
 
 def student_unrated(request):
-    student = Student.objects.get(pk=pk)
+    student = get_object_or_404(Student, user=request.user)
     tasks_queryset = Task.objects.filter(class_id=student.class_id).filter(
         ~Q(mark__student_id=student)
     )
     current_date = datetime.datetime.now()
-    if "to_rated_tasks" in request.POST:
-        return redirect("rated", pk=student.id)
-    elif "to_unrated_tasks" in request.POST:
-        return redirect("teacher_unrated", pk=student.id)
+    if 'btnform2' in request.POST:
+        return redirect('student_rated')
     context = {
         "student": student,
         "current_date": current_date,
         "tasks_queryset": tasks_queryset,
     }
-    return render(request, "all_unrated.html", context)
+    return render(request, "student_unrated.html", context)
 
 def student_rated(request):
     student = get_object_or_404(Student, user=request.user)
