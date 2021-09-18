@@ -55,9 +55,11 @@ def student_current(request):
     return render(request, "student_current.html", context)
 
 def student_all(request):
-    student = Student.objects.get(id=3)
-    tasks_queryset = Task.objects.order_by('end_date')
-    marks_queryset = Mark.objects.all()
+    student = get_object_or_404(Student, user=request.user)
+    tasks_queryset = Task.objects.filter(
+        Q(class_id=student.class_id) &
+        Q(mark__student_id=student)
+    )
     current_date = datetime.datetime.now()
     if "btnform2" in request.POST:
         return redirect("/school/student/current/")
@@ -65,7 +67,6 @@ def student_all(request):
         "student": student,
         "current_date": current_date,
         "tasks_queryset": tasks_queryset,
-        "marks_queryset": marks_queryset,
     }
     return render(request, "student_all.html", context)
 
