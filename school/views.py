@@ -54,13 +54,11 @@ def student_unrated(request):
     return render(request, "student_unrated.html", context)
 
 def student_rated(request):
-    student = Student.objects.get(pk=pk)
-    marks_queryset = Mark.objects.filter(student_id=student).order_by("task_id")
+    student = get_object_or_404(Student, user=request.user)
+    marks_queryset = Mark.objects.fistudent_rated viewlter(student_id=student).order_by("task_id")
     current_date = datetime.datetime.now()
-    if "to_unrated_tasks" in request.POST:
-        return redirect("teacher_unrated", pk=student.id)
-    elif "to_current_tasks" in request.POST:
-        return redirect("rated", pk=student.id)
+    if "btnform2" in request.POST:
+        return redirect('student_unrated')
     context = {
         "student": student,
         "current_date": current_date,

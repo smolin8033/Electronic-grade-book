@@ -16,20 +16,20 @@ Today is: {{current_date|date:"M. d, Y"}}
         <th>End Date</th>
         <th>Mark</th>
     </tr>
-    {% for task in tasks_queryset %}
+    {% for mark in marks_queryset %}
     <tr>
         <td>{{ forloop.counter }}</td>
-        <td>{{ task.task_name }}</td>
-        <td>{{ task.discipline_id }}</td>
-        <td>{{ task.start_date|date:"N. d, Y" }}</td>
-        <td>{{ task.end_date|date:"N. d, Y" }}</td>
-        <td>{{ task.mark_set.get }}</td>
+        <td>{{ mark.task_id.task_name }}</td>
+        <td>{{ mark.task_id.discipline_id }}</td>
+        <td>{{ mark.task_id.start_date|date:"N. d, Y" }}</td>
+        <td>{{ mark.task_id.end_date|date:"N. d, Y" }}</td>
+        <td>{{ mark }}</td>
     </tr>
     {% endfor %}
 </table><br>
 <center>
     <form method="POST">{% csrf_token %}{{ form.as_p }}
-        <button type="submit" name="btnform2">Show current tasks</button>
+        <button type="submit" name="btnform2">Show unrated tasks</button>
     </form>
 </center>
 {% endblock %}
