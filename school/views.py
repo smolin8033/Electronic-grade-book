@@ -1,5 +1,5 @@
 import datetime
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.db.models import Q
 from django.http import HttpResponse
 from django.shortcuts import (render, redirect,
