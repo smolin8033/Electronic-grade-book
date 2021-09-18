@@ -44,6 +44,7 @@ def logout_view(request):
         logout(request)
         return redirect('login')
 
+@permission_required('school.view_mark')
 def student_unrated(request):
     student = get_object_or_404(Student, user=request.user)
     tasks_queryset = Task.objects.filter(class_id=student.class_id).filter(
@@ -59,6 +60,7 @@ def student_unrated(request):
     }
     return render(request, "student_unrated.html", context)
 
+@permission_required('school.view_mark')
 def student_rated(request):
     student = get_object_or_404(Student, user=request.user)
     marks_queryset = Mark.objects.filter(student_id=student).order_by("task_id")
