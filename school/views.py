@@ -66,7 +66,7 @@ def student_rated(request):
         "current_date": current_date,
         "marks_queryset": marks_queryset,
     }
-    return render(request, "all_rated.html", context)
+    return render(request, "student_rated.html", context)
 
 def teacher_interface(request):
     class_queryset = Class.objects.order_by("class_number", "group")
