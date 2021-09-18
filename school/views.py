@@ -31,7 +31,7 @@ def login_view(request):
             user = authenticate(username=cd["username"], password=cd["password"])
             if user is not None:
                 login(request, user)
-                return HttpResponse("Authenticated successfully")
+                return render(redirect('student_current'))
             else:
                 return HttpResponse("Invalid login")
     else:
