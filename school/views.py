@@ -1,5 +1,6 @@
 import datetime
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import permission_required
 from django.db.models import Q
 from django.http import HttpResponse
 from django.shortcuts import (render, redirect,
