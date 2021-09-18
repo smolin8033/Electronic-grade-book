@@ -38,6 +38,11 @@ def login_view(request):
         form = LoginForm()
     return render(request, "login.html", {"form": form})
 
+def logout_view(request):
+    if request.method == "POST":
+        logout(request)
+        return redirect('login')
+
 def student_unrated(request):
     student = get_object_or_404(Student, user=request.user)
     tasks_queryset = Task.objects.filter(class_id=student.class_id).filter(
