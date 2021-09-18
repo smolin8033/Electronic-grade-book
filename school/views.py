@@ -31,7 +31,7 @@ def login_view(request):
             user = authenticate(username=cd["username"], password=cd["password"])
             if user is not None:
                 login(request, user)
-                return render(redirect('student_current'))
+                return redirect('student_current')
             else:
                 return HttpResponse("Invalid login")
     else:
@@ -39,7 +39,7 @@ def login_view(request):
     return render(request, "login.html", {"form": form})
 
 def student_current(request):
-    student = Student.objects.get(id=3)
+    student = get_object_or_404(Student, user=request.user)
     tasks_queryset = Task.objects.order_by('end_date')[:10]
     marks_queryset = Mark.objects.all()
     current_date = datetime.datetime.now()
