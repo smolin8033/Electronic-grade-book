@@ -55,7 +55,7 @@ def student_unrated(request):
 
 def student_rated(request):
     student = get_object_or_404(Student, user=request.user)
-    marks_queryset = Mark.objects.fistudent_rated viewlter(student_id=student).order_by("task_id")
+    marks_queryset = Mark.objects.filter(student_id=student).order_by("task_id")
     current_date = datetime.datetime.now()
     if "btnform2" in request.POST:
         return redirect('student_unrated')
