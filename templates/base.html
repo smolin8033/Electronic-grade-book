@@ -7,6 +7,11 @@
 <body bgcolor="c0c0c0">
 <p>Ministry of Education<br>
     The official site of «Rushmore» high school</p>
+<center>
+    <form action="{% url 'logout' %}" method="POST">{% csrf_token %}
+    <input type="submit" value="Log out">
+    </form>
+</center>
 
 {% block content %}
 replace me
