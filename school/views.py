@@ -32,9 +32,15 @@ def login_view(request):
             user = authenticate(username=cd["username"], password=cd["password"])
             if user is not None:
                 login(request, user)
-                return redirect('student_unrated')
+                group = request.user.groups.get(user=request.user)
+                if group.name == 'student':
+                    return redirect('student_unrated')
+                elif group.name == 'teacher':
+                    return redirect('teacher_interface')
+                else:
+                    return redirect('manager_interface')
             else:
-                return HttpResponse("Invalid login")
+                return HttpResponse('Invalid login')
     else:
         form = LoginForm()
     return render(request, "login.html", {"form": form})
