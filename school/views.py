@@ -194,22 +194,20 @@ def mark_create_view(request, pk, rel_task):
     return render(request, "add_mark.html", context)
 
 class MarkUpdateView(PermissionRequiredMixin, UpdateView):
+    permission_required = 'school.change_mark'
     model = Mark
     form_class = MarkForm
     context_object_name = "mark"
-    raise_exception = False
-    permission_required = 'school.change_mark'
     template_name = "mark_update.html"
 
     def get_success_url(self):
         return reverse("rated", kwargs={"pk": self.object.student_id.id})
 
 class MarkDeleteView(PermissionRequiredMixin, DeleteView):
+    permission_required = 'school.delete_mark'
     model = Mark
     form_class = MarkForm
     context_object_name = "mark"
-    raise_exception = False
-    permission_required = 'school.delete_mark'
     template_name = "mark_delete.html"
 
     def get_success_url(self):
