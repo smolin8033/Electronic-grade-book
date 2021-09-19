@@ -80,6 +80,7 @@ def student_rated(request):
     }
     return render(request, "student_rated.html", context)
 
+@permission_required('school.change_mark')
 def teacher_interface(request):
     class_queryset = Class.objects.order_by("class_number", "group")
     if request.method == "POST":
@@ -93,6 +94,7 @@ def teacher_interface(request):
     }
     return render(request, "teacher_interface.html", context)
 
+@permission_required('school.change_mark')
 def class_students(request, pk):
     chosen_class = get_object_or_404(Class, pk=pk)
     chosen_class_total = Student.objects.filter(class_id=chosen_class).count()
@@ -104,6 +106,7 @@ def class_students(request, pk):
     }
     return render(request, "class_students.html", context)
 
+@permission_required('school.change_mark')
 def rated(request, pk):
     student = Student.objects.get(pk=pk)
     marks_queryset = Mark.objects.filter(student_id=student).order_by("task_id")[:10]
@@ -119,6 +122,7 @@ def rated(request, pk):
     }
     return render(request, "rated.html", context)
 
+@permission_required('school.change_mark')
 def all_rated(request, pk):
     student = Student.objects.get(pk=pk)
     marks_queryset = Mark.objects.filter(student_id=student).order_by("task_id")
@@ -134,6 +138,7 @@ def all_rated(request, pk):
     }
     return render(request, "all_rated.html", context)
 
+@permission_required('school.change_mark')
 def teacher_unrated(request, pk):
     student = Student.objects.get(pk=pk)
     tasks_queryset = Task.objects.filter(class_id=student.class_id).filter(
@@ -151,6 +156,7 @@ def teacher_unrated(request, pk):
     }
     return render(request, "teacher_unrated.html", context)
 
+@permission_required('school.change_mark')
 def all_unrated(request, pk):
     student = Student.objects.get(pk=pk)
     tasks_queryset = Task.objects.filter(class_id=student.class_id).filter(
@@ -168,6 +174,7 @@ def all_unrated(request, pk):
     }
     return render(request, "all_unrated.html", context)
 
+@permission_required('school.add_mark')
 def mark_create_view(request, pk, rel_task):
     student = get_object_or_404(Student, pk=pk)
     task = get_object_or_404(Task, id=rel_task)
@@ -185,6 +192,7 @@ def mark_create_view(request, pk, rel_task):
     }
     return render(request, "add_mark.html", context)
 
+@permission_required('school.change_mark')
 class MarkUpdateView(UpdateView):
     model = Mark
     form_class = MarkForm
@@ -194,6 +202,7 @@ class MarkUpdateView(UpdateView):
     def get_success_url(self):
         return reverse("rated", kwargs={"pk": self.object.student_id.id})
 
+@permission_required('school.delete_mark')
 class MarkDeleteView(DeleteView):
     model = Mark
     form_class = MarkForm
