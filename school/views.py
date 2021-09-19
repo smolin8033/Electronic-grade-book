@@ -197,6 +197,7 @@ class MarkUpdateView(PermissionRequiredMixin, UpdateView):
     model = Mark
     form_class = MarkForm
     context_object_name = "mark"
+    permission_required = 'school.change_mark'
     template_name = "mark_update.html"
 
     def get_success_url(self):
@@ -206,6 +207,7 @@ class MarkDeleteView(PermissionRequiredMixin, DeleteView):
     model = Mark
     form_class = MarkForm
     context_object_name = "mark"
+    permission_required = 'school.delete_mark'
     template_name = "mark_delete.html"
 
     def get_success_url(self):
