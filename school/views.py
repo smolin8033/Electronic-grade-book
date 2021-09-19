@@ -193,7 +193,7 @@ def mark_create_view(request, pk, rel_task):
     }
     return render(request, "add_mark.html", context)
 
-class MarkUpdateView(UpdateView):
+class MarkUpdateView(PermissionRequiredMixin, UpdateView):
     model = Mark
     form_class = MarkForm
     context_object_name = "mark"
@@ -202,7 +202,7 @@ class MarkUpdateView(UpdateView):
     def get_success_url(self):
         return reverse("rated", kwargs={"pk": self.object.student_id.id})
 
-class MarkDeleteView(DeleteView):
+class MarkDeleteView(PermissionRequiredMixin, DeleteView):
     model = Mark
     form_class = MarkForm
     context_object_name = "mark"
