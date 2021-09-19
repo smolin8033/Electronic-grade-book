@@ -1,6 +1,7 @@
 import datetime
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import permission_required
+from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.db.models import Q
 from django.http import HttpResponse
 from django.shortcuts import (render, redirect,
@@ -192,7 +193,6 @@ def mark_create_view(request, pk, rel_task):
     }
     return render(request, "add_mark.html", context)
 
-@permission_required('school.change_mark')
 class MarkUpdateView(UpdateView):
     model = Mark
     form_class = MarkForm
@@ -202,7 +202,6 @@ class MarkUpdateView(UpdateView):
     def get_success_url(self):
         return reverse("rated", kwargs={"pk": self.object.student_id.id})
 
-@permission_required('school.delete_mark')
 class MarkDeleteView(DeleteView):
     model = Mark
     form_class = MarkForm
