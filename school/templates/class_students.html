@@ -2,7 +2,7 @@
 
 {% block content %}
 <br>
-<form action="{{ request.META.HTTP_REFERER }}">
+<form action="{% url 'teacher_interface' %}">
     <input type="submit" value="Go back to choose again" />
 </form>
 <br>
