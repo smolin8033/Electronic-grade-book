@@ -213,7 +213,7 @@ class MarkDeleteView(PermissionRequiredMixin, DeleteView):
     def get_success_url(self):
         return reverse("rated", kwargs={"pk": self.object.student_id.id})
 
-class TaskListView(ListView):
+class TaskListView(PermissionRequiredMixin, ListView):
     model = Class
     template_name = "teacher_tasks.html"
     context_object_name = "task_list"
@@ -227,7 +227,7 @@ class TaskListView(ListView):
         context["chosen_class"] = chosen_class
         return context
 
-class TaskCreateView(CreateView):
+class TaskCreateView(PermissionRequiredMixin, CreateView):
     template_name = "teacher_tasks_create.html"
     form_class = TaskForm
 
@@ -241,13 +241,13 @@ class TaskCreateView(CreateView):
         context["pk"] = self.kwargs["pk"]
         return context
 
-class TaskUpdateView(UpdateView):
+class TaskUpdateView(PermissionRequiredMixin, UpdateView):
     model = Task
     form_class = TaskForm
     context_object_name = "task"
     template_name = "teacher_tasks_update.html"
 
-class TaskDeleteView(DeleteView):
+class TaskDeleteView(PermissionRequiredMixin, DeleteView):
     model = Task
     context_object_name = "task"
     template_name = "teacher_tasks_delete.html"
