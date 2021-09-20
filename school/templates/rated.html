@@ -6,7 +6,7 @@
 <p>Birthday: {{student.birthday}}<br><br>
 Today is: {{current_date|date:"M. d, Y"}}
 </p>
-<form action="{{ request.META.HTTP_REFERER }}">
+<form action="{% url 'class_students' pk=student.class_id.id %}">
     <input type="submit" value="Go back to choose again" />
 </form>
 <table border="1" bgcolor="f2f3f4" align="center">
