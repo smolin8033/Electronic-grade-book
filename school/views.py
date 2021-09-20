@@ -214,6 +214,7 @@ class MarkDeleteView(PermissionRequiredMixin, DeleteView):
         return reverse("rated", kwargs={"pk": self.object.student_id.id})
 
 class TaskListView(PermissionRequiredMixin, ListView):
+    permission_required = 'school.change_task'
     model = Class
     template_name = "teacher_tasks.html"
     context_object_name = "task_list"
@@ -228,6 +229,7 @@ class TaskListView(PermissionRequiredMixin, ListView):
         return context
 
 class TaskCreateView(PermissionRequiredMixin, CreateView):
+    permission_required = 'school.add_task'
     template_name = "teacher_tasks_create.html"
     form_class = TaskForm
 
@@ -242,12 +244,14 @@ class TaskCreateView(PermissionRequiredMixin, CreateView):
         return context
 
 class TaskUpdateView(PermissionRequiredMixin, UpdateView):
+    permission_required = 'school.change_task'
     model = Task
     form_class = TaskForm
     context_object_name = "task"
     template_name = "teacher_tasks_update.html"
 
 class TaskDeleteView(PermissionRequiredMixin, DeleteView):
+    permission_required = 'school.delete_task'
     model = Task
     context_object_name = "task"
     template_name = "teacher_tasks_delete.html"
