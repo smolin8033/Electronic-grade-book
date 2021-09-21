@@ -359,3 +359,19 @@ class StudentDeleteView(DeleteView):
 
     def get_success_url(self):
         return reverse("manager_class", kwargs={"pk": self.object.class_id.id})
+
+@permission_required('school.view_mark')
+def manager_unrated(request):
+    student = get_object_or_404(Student, user=request.user)
+    tasks_queryset = Task.objects.filter(class_id=student.class_id).filter(
+        ~Q(mark__student_id=student)
+    )
+    current_date = datetime.datetime.now()
+    if 'btnform2' in request.POST:
+        return redirect('student_rated')
+    context = {
+        "student": student,
+        "current_date": current_date,
+        "tasks_queryset": tasks_queryset,
+    }
+    return render(request, "student_unrated.html", context)
