@@ -321,7 +321,7 @@ def manager_choice(request):
         if "students" in request.POST:
             return redirect("manager_class", pk=pk)
         else:
-            return redirect("teacher_tasks", pk=pk)
+            return redirect("manager_tasks", pk=pk)
     context = {
         "class_queryset": class_queryset,
     }
