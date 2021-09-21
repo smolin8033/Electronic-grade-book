@@ -368,7 +368,7 @@ def manager_unrated(request):
     )
     current_date = datetime.datetime.now()
     if 'btnform2' in request.POST:
-        return redirect('student_rated')
+        return redirect('manager_rated')
     context = {
         "student": student,
         "current_date": current_date,
@@ -382,7 +382,7 @@ def manager_rated(request):
     marks_queryset = Mark.objects.filter(student_id=student).order_by("task_id")
     current_date = datetime.datetime.now()
     if "btnform2" in request.POST:
-        return redirect('student_unrated')
+        return redirect('manager_unrated')
     context = {
         "student": student,
         "current_date": current_date,
