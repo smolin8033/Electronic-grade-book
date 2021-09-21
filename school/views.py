@@ -397,3 +397,8 @@ class TaskListManager(ListView):
 
     def get_queryset(self):
         return Task.objects.filter(class_id=self.kwargs['pk'])
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(TaskListManager, self).get_context_data(*args, **kwargs)
+        context['chosen_class'] = get_object_or_404(Class, pk=self.kwargs['pk'])
+        return context
