@@ -375,3 +375,17 @@ def manager_unrated(request):
         "tasks_queryset": tasks_queryset,
     }
     return render(request, "student_unrated.html", context)
+
+@permission_required('school.view_mark')
+def manager_rated(request):
+    student = get_object_or_404(Student, user=request.user)
+    marks_queryset = Mark.objects.filter(student_id=student).order_by("task_id")
+    current_date = datetime.datetime.now()
+    if "btnform2" in request.POST:
+        return redirect('student_unrated')
+    context = {
+        "student": student,
+        "current_date": current_date,
+        "marks_queryset": marks_queryset,
+    }
+    return render(request, "student_rated.html", context)
