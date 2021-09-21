@@ -396,5 +396,4 @@ class TaskListManager(ListView):
     context_object_name = 'task_list'
 
     def get_queryset(self):
-        print(self.kwargs)
-        return self
+        return Task.objects.filter(class_id=self.kwargs['pk'])
