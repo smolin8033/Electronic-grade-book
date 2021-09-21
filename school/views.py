@@ -389,3 +389,12 @@ def manager_rated(request, pk):
         "marks_queryset": marks_queryset,
     }
     return render(request, "manager_rated.html", context)
+
+class TaskListManager(ListView):
+    model = Task
+    template_name = 'manager_tasks.html'
+    context_object_name = 'task_list'
+
+    def get_queryset(self):
+        print(self.kwargs)
+        return self
