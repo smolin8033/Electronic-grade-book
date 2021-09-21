@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<form action="{% url 'manager_interface' %}">
+    <input type="submit" value="Go back to choose again" />
+</form>
 <center>
     <p>These are all students of the school:</p>
     <table border="1" bgcolor="f2f3f4" align="center">
