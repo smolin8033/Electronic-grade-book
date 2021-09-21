@@ -361,7 +361,7 @@ class StudentDeleteView(DeleteView):
         return reverse("manager_class", kwargs={"pk": self.object.class_id.id})
 
 @permission_required('school.view_mark')
-def manager_unrated(request):
+def manager_unrated(request, pk):
     student = get_object_or_404(Student, user=request.user)
     tasks_queryset = Task.objects.filter(class_id=student.class_id).filter(
         ~Q(mark__student_id=student)
@@ -377,7 +377,7 @@ def manager_unrated(request):
     return render(request, "student_unrated.html", context)
 
 @permission_required('school.view_mark')
-def manager_rated(request):
+def manager_rated(request, pk):
     student = get_object_or_404(Student, user=request.user)
     marks_queryset = Mark.objects.filter(student_id=student).order_by("task_id")
     current_date = datetime.datetime.now()
