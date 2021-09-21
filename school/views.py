@@ -359,14 +359,3 @@ class StudentDeleteView(DeleteView):
 
     def get_success_url(self):
         return reverse("manager_class", kwargs={"pk": self.object.class_id.id})
-
-def manager_rated(request, pk):
-    student = Student.objects.get(pk=pk)
-    marks_queryset = Mark.objects.filter(student_id=student)
-    current_date = datetime.datetime.now()
-    context = {
-        "student": student,
-        "current_date": current_date,
-        "marks_queryset": marks_queryset,
-    }
-    return render(request, "manager_rated.html", context)
