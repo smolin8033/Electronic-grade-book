@@ -32,5 +32,4 @@ urlpatterns = [
     path('manager/<int:pk>/class/', views.manager_class, name="manager_class"),
     path('manager/<int:pk>/class/new-student/', views.StudentCreateView.as_view(), name="student_create"),
     path('manager/<int:pk>/class/delete-student/', views.StudentDeleteView.as_view(), name="student_delete"),
-    path('manager/<int:pk>/class/rated/', views.manager_rated, name="manager_rated")
 ]
