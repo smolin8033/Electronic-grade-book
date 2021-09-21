@@ -374,7 +374,7 @@ def manager_unrated(request, pk):
         "current_date": current_date,
         "tasks_queryset": tasks_queryset,
     }
-    return render(request, "student_unrated.html", context)
+    return render(request, "manager_unrated.html", context)
 
 @permission_required('school.view_mark')
 def manager_rated(request, pk):
@@ -388,4 +388,4 @@ def manager_rated(request, pk):
         "current_date": current_date,
         "marks_queryset": marks_queryset,
     }
-    return render(request, "student_rated.html", context)
+    return render(request, "manager_rated.html", context)
