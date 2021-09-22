@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<form action="{% url 'manager_interface' %}">
+    <input type="submit" value="Go back to choose again" />
+</form>
 <br>
 <center>
 <p>Choose the class:</p>
