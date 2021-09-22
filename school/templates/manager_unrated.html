@@ -9,7 +9,7 @@ Today is: {{current_date|date:"M. d, Y"}}
 <form action="{% url 'student_list' %}">
     <input type="submit" value="Go back to the list of all students of the school" />
 </form>
-<form action="{% url 'manager_class' %}">
+<form action="{% url 'manager_class' pk=student.class_id.id %}">
     <input type="submit" value="Go back to the list of the chosen class students" />
 </form>
 <center>
