@@ -6,6 +6,9 @@
 <p>Birthday: {{student.birthday}}<br><br>
 Today is: {{current_date|date:"M. d, Y"}}
 </p>
+<form action="{% url 'student_list' %}">
+    <input type="submit" value="Go back to choose again" />
+</form>
 <center>
     <p>The rated tasks are:</p>
 <table border="1" bgcolor="f2f3f4" align="center">
