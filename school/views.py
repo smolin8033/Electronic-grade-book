@@ -259,20 +259,24 @@ class TaskDeleteView(PermissionRequiredMixin, DeleteView):
     def get_success_url(self):
         return reverse("teacher_tasks", kwargs={"pk": self.object.class_id.id})
 
+@permission_required('school.add_student')
 def manager_interface(request):
     return render(request, "manager_interface.html")
 
-class StudentListView(ListView):
+class StudentListView(PermissionRequiredMixin, ListView):
+    permission_required = 'school.add_student'
     model = Student
     template_name = "manager_students.html"
     context_object_name = "student_list"
 
-class TeacherListView(ListView):
+class TeacherListView(PermissionRequiredMixin, ListView):
+    permission_required = 'school.add_teacher'
     model = Teacher
     template_name = "manager_teachers.html"
     context_object_name = "teacher_list"
 
-class DisciplineCreateView(CreateView):
+class DisciplineCreateView(PermissionRequiredMixin, CreateView):
+    permission_required = 'school.add_discipline'
     template_name = "discipline_create.html"
     form_class = DisciplineForm
 
@@ -282,13 +286,15 @@ class DisciplineCreateView(CreateView):
         initial["teacher_id"] = Teacher.objects.all()[0]
         return initial
 
-class DisciplineUpdateView(UpdateView):
+class DisciplineUpdateView(PermissionRequiredMixin, UpdateView):
+    permission_required = 'school.change_discipline'
     model = Discipline
     form_class = DisciplineForm
     template_name = "discipline_update.html"
     context_object_name = "discipline"
 
-class DisciplineDeleteView(DeleteView):
+class DisciplineDeleteView(PermissionRequiredMixin, DeleteView):
+    permission_required = 'school.delete_discipline'
     model = Discipline
     template_name = "discipline_delete.html"
     context_object_name = "discipline"
@@ -296,17 +302,20 @@ class DisciplineDeleteView(DeleteView):
     def get_success_url(self):
         return reverse("teacher_list")
 
-class TeacherCreateView(CreateView):
+class TeacherCreateView(PermissionRequiredMixin, CreateView):
+    permission_required = 'school.add_teacher'
     template_name = "teacher_create.html"
     form_class = TeacherForm
 
-class TeacherUpdateView(UpdateView):
+class TeacherUpdateView(PermissionRequiredMixin, UpdateView):
+    permission_required = 'school.change_teacher'
     model = Teacher
     form_class = TeacherForm
     template_name = "teacher_update.html"
     context_object_name = "teacher"
 
-class TeacherDeleteView(DeleteView):
+class TeacherDeleteView(PermissionRequiredMixin, DeleteView):
+    permission_required = 'school.delete_teacher'
     model = Teacher
     template_name = "teacher_delete.html"
     context_object_name = "teacher"
@@ -314,6 +323,7 @@ class TeacherDeleteView(DeleteView):
     def get_success_url(self):
         return reverse("teacher_list")
 
+@permission_required('school.add_student')
 def manager_choice(request):
     class_queryset = Class.objects.order_by("class_number", "group")
     if request.method == "POST":
@@ -327,6 +337,7 @@ def manager_choice(request):
     }
     return render(request, "manager_choice.html", context)
 
+@permission_required('school.add_student')
 def manager_class(request, pk):
     chosen_class = get_object_or_404(Class, pk=pk)
     chosen_class_total = Student.objects.filter(class_id=chosen_class).count()
@@ -338,7 +349,8 @@ def manager_class(request, pk):
     }
     return render(request, "manager_class.html", context)
 
-class StudentCreateView(CreateView):
+class StudentCreateView(PermissionRequiredMixin, CreateView):
+    permission_required = 'school.add_student'
     template_name = "student_create.html"
     form_class = StudentForm
 
@@ -352,7 +364,8 @@ class StudentCreateView(CreateView):
         context["pk"] = self.kwargs["pk"]
         return context
 
-class StudentDeleteView(DeleteView):
+class StudentDeleteView(PermissionRequiredMixin, DeleteView):
+    permission_required = 'school.delete_student'
     model = Student
     template_name = "student_delete.html"
     context_object_name = "student"
@@ -360,7 +373,7 @@ class StudentDeleteView(DeleteView):
     def get_success_url(self):
         return reverse("manager_class", kwargs={"pk": self.object.class_id.id})
 
-@permission_required('school.view_mark')
+@permission_required('school.add_student')
 def manager_unrated(request, pk):
     student = get_object_or_404(Student, pk=pk)
     tasks_queryset = Task.objects.filter(class_id=student.class_id).filter(
@@ -376,7 +389,7 @@ def manager_unrated(request, pk):
     }
     return render(request, "manager_unrated.html", context)
 
-@permission_required('school.view_mark')
+@permission_required('school.add_student')
 def manager_rated(request, pk):
     student = get_object_or_404(Student, pk=pk)
     marks_queryset = Mark.objects.filter(student_id=student).order_by("task_id")
@@ -390,7 +403,8 @@ def manager_rated(request, pk):
     }
     return render(request, "manager_rated.html", context)
 
-class TaskListManager(ListView):
+class TaskListManager(PermissionRequiredMixin, ListView):
+    permission_required = 'school.add_student'
     model = Task
     template_name = 'manager_tasks.html'
     context_object_name = 'task_list'
