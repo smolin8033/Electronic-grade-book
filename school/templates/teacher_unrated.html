@@ -9,8 +9,8 @@ Today is: {{current_date|date:"M. d, Y"}}
 <form action="{% url 'class_students' pk=student.class_id.id %}">
     <input type="submit" value="Go back to choose again" />
 </form>
+<center><p>The current tasks are:</p></center>
 <table border="1" bgcolor="f2f3f4" align="center">
-    <caption><strong>The current tasks are:</strong></caption>
     <tr>
         <th>№</th>
         <th>Task Name</th>
