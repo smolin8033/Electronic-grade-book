@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+<center>
 <h4>The mark for:</h4>
 <h4>Student: {{ student.get_full_name }}</h4>
 <h4>Task: {{ task }}</h4>
@@ -13,7 +13,7 @@
 <form action="{% url 'teacher_unrated' pk=student.id %}">
     <input type="submit" value="Choose another task" />
 </form>
-
+</center>
 {% endblock %}
 
 </body>
