@@ -282,12 +282,6 @@ class DisciplineCreateView(PermissionRequiredMixin, CreateView):
     template_name = "discipline_create.html"
     form_class = DisciplineForm
 
-    def get_initial(self, *args, **kwargs):
-        initial = super(DisciplineCreateView, self).get_initial(**kwargs)
-        initial["class_id"] = Class.objects.all()[0]
-        initial["teacher_id"] = Teacher.objects.all()[0]
-        return initial
-
 class DisciplineUpdateView(PermissionRequiredMixin, UpdateView):
     permission_required = 'school.change_discipline'
     model = Discipline
