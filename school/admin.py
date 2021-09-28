@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import (Student, Class, TypeOfClass, Teacher,
-                     Discipline, Task, Curriculum, Mark)
+                     Discipline, Task, Mark)
 
 
 class StudentAdmin(admin.ModelAdmin):
@@ -31,7 +31,6 @@ admin.site.register(TypeOfClass)
 admin.site.register(Teacher, TeacherAdmin)
 admin.site.register(Discipline, DisciplineAdmin)
 admin.site.register(Task, TaskAdmin)
-admin.site.register(Curriculum)
 admin.site.register(Mark)
 admin.site.site_header = "Our school"
 # Register your models here.
