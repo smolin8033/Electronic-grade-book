@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<center>
 <h4>The mark for:</h4>
 <h4>Student: {{ mark.student_id.get_full_name }}</h4>
 <h4>Task: {{ mark.task_id }}</h4>
@@ -15,6 +16,7 @@ Change mark:
 <form action="{% url 'mark_delete' pk=mark.id %}">
     <input type="submit" value="Delete chosen mark" />
 </form>
+</center>
 {% endblock %}
 
 </body>
