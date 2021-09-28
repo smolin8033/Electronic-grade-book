@@ -111,12 +111,6 @@ class Task(models.Model):
         ordering = ("end_date",)
 
 
-class Curriculum(models.Model):
-    teacher_id = models.ForeignKey(Teacher, on_delete=models.CASCADE, default="")
-    class_id = models.ForeignKey(Class, on_delete=models.CASCADE, default="")
-    discipline_id = models.ForeignKey(Discipline, on_delete=models.CASCADE, default="")
-
-
 class Mark(models.Model):
     student_id = models.ForeignKey(Student, on_delete=models.CASCADE, default="")
     final_score = models.IntegerField()
