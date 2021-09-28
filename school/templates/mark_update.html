@@ -2,9 +2,9 @@
 
 {% block content %}
 <center>
-<h4>The mark for:</h4>
-<h4>Student: {{ mark.student_id.get_full_name }}</h4>
-<h4>Task: {{ mark.task_id }}</h4>
+<p>The mark for: <br><br>
+Student: {{ mark.student_id.get_full_name }} <br><br>
+Task: {{ mark.task_id }}</p>
 Change mark:
 <form action="." method="POST">{% csrf_token %}
 {{ form.as_p }}
