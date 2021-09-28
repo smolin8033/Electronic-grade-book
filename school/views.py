@@ -33,13 +33,16 @@ def login_view(request):
             user = authenticate(username=cd["username"], password=cd["password"])
             if user is not None:
                 login(request, user)
-                group = request.user.groups.get(user=request.user)
-                if group.name == 'student':
-                    return redirect('student_unrated')
-                elif group.name == 'teacher':
-                    return redirect('teacher_interface')
+                if user.is_superuser:
+                    return redirect('admin:index')
                 else:
-                    return redirect('manager_interface')
+                    group = request.user.groups.get(user=request.user)
+                    if group.name == 'student':
+                        return redirect('student_unrated')
+                    elif group.name == 'teacher':
+                        return redirect('teacher_interface')
+                    else:
+                        return redirect('manager_interface')
             else:
                 return HttpResponse('Invalid login')
     else:
