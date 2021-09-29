@@ -42,7 +42,7 @@ class Student(models.Model):
         return "%s %s %s" % (self.first_name, self.second_name, self.family_name)
 
     def get_absolute_url(self):
-        return reverse("manager_class", kwargs={"pk": self.class_id.id})
+        return reverse("manager_class", kwargs={"pk": self.grade.id})
 
     def __str__(self):
         return "%s %s %s, address: %s " % \
@@ -105,7 +105,7 @@ class Task(models.Model):
         return self.task_name
 
     def get_absolute_url(self):
-        return reverse("teacher_tasks", kwargs={"pk": self.class_id.id})
+        return reverse("teacher_tasks", kwargs={"pk": self.grade.id})
 
     class Meta:
         ordering = ("end_date",)

@@ -17,7 +17,7 @@ class MarkForm(forms.ModelForm):
 
 class TaskForm(forms.ModelForm):
     task_name = forms.CharField(max_length=100)
-    class_id = forms.ModelChoiceField(
+    grade = forms.ModelChoiceField(
         label="Choose a class",
         queryset=Class.objects.all()
     )
@@ -43,7 +43,7 @@ class TaskForm(forms.ModelForm):
             "task_name",
             "start_date",
             "end_date",
-            "class_id",
+            "grade",
             "teacher_id",
             "commentary",
             "discipline_id",
@@ -56,7 +56,7 @@ class TaskForm(forms.ModelForm):
 class DisciplineForm(forms.ModelForm):
     name = forms.CharField(max_length=40)
     type = forms.CharField(max_length=40)
-    class_id = forms.ModelChoiceField(label="Choose a class", queryset=Class.objects.all())
+    grade = forms.ModelChoiceField(label="Choose a class", queryset=Class.objects.all())
     teacher_id = forms.ModelChoiceField(label="Choose a teacher", queryset=Teacher.objects.all())
     hours = forms.IntegerField()
 
@@ -65,7 +65,7 @@ class DisciplineForm(forms.ModelForm):
         fields = [
             "name",
             "type",
-            "class_id",
+            "grade",
             "teacher_id",
             "hours"
         ]
@@ -102,7 +102,7 @@ class StudentForm(forms.ModelForm):
     second_name = forms.CharField(max_length=30)
     family_name = forms.CharField(max_length=30)
     address = forms.CharField(max_length=40)
-    class_id = forms.ModelChoiceField(label="Choose a class", queryset=Class.objects.all())
+    grade = forms.ModelChoiceField(label="Choose a class", queryset=Class.objects.all())
 
     class Meta:
         model = Student
@@ -112,7 +112,7 @@ class StudentForm(forms.ModelForm):
             "family_name",
             "address",
             "birthday",
-            "class_id"
+            "grade"
         ]
         widgets = {
             "birthday": DateInput()

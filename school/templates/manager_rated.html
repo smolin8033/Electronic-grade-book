@@ -2,14 +2,14 @@
 
 {% block content %}
 <h4>Student:{{student.get_full_name}}</h4>
-<h4>Class:{{student.class_id}}</h4>
+<h4>Class:{{student.grade}}</h4>
 <p>Birthday: {{student.birthday}}<br><br>
 Today is: {{current_date|date:"M. d, Y"}}
 </p>
 <form action="{% url 'student_list' %}">
     <input type="submit" value="Go back to the list of all students of the school" />
 </form> <br>
-<form action="{% url 'manager_class' pk=student.class_id.id %}">
+<form action="{% url 'manager_class' pk=student.grade.id %}">
     <input type="submit" value="Go back to the list of students of the current class" />
 </form>
 <center>

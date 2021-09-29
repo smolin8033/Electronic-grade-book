@@ -23,8 +23,8 @@
             <td>{{ student.first_name }}</td>
             <td>{{ student.second_name }}</td>
             <td>{{ student.family_name }}</td>
-            <td>{{ student.class_id }}</td>
-            <td>{{ student.class_id.type_of_class }}</td>
+            <td>{{ student.grade }}</td>
+            <td>{{ student.grade.type_of_class }}</td>
             <td>{{ student.birthday }}</td>
             <td><a href="{% url 'manager_unrated' pk=student.id %}">View</a></td>
         </tr>

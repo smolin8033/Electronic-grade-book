@@ -57,7 +57,7 @@ def logout_view(request):
 @permission_required('school.view_mark')
 def student_unrated(request):
     student = get_object_or_404(Student, user=request.user)
-    tasks_queryset = Task.objects.filter(class_id=student.class_id).filter(
+    tasks_queryset = Task.objects.filter(grade=student.grade).filter(
         ~Q(mark__student_id=student)
     )
     current_date = datetime.datetime.now()
@@ -101,8 +101,8 @@ def teacher_interface(request):
 @permission_required('school.change_mark')
 def class_students(request, pk):
     chosen_class = get_object_or_404(Class, pk=pk)
-    chosen_class_total = Student.objects.filter(class_id=chosen_class).count()
-    chosen_class_queryset = Student.objects.filter(class_id=chosen_class)
+    chosen_class_total = Student.objects.filter(grade=chosen_class).count()
+    chosen_class_queryset = Student.objects.filter(grade=chosen_class)
     context = {
         "chosen_class": chosen_class,
         "chosen_class_total": chosen_class_total,
@@ -145,7 +145,7 @@ def all_rated(request, pk):
 @permission_required('school.change_mark')
 def teacher_unrated(request, pk):
     student = Student.objects.get(pk=pk)
-    tasks_queryset = Task.objects.filter(class_id=student.class_id).filter(
+    tasks_queryset = Task.objects.filter(grade=student.grade).filter(
         ~Q(mark__student_id=student)
     )[:10]
     current_date = datetime.datetime.now()
@@ -163,7 +163,7 @@ def teacher_unrated(request, pk):
 @permission_required('school.change_mark')
 def all_unrated(request, pk):
     student = Student.objects.get(pk=pk)
-    tasks_queryset = Task.objects.filter(class_id=student.class_id).filter(
+    tasks_queryset = Task.objects.filter(grade=student.grade).filter(
         ~Q(mark__student_id=student)
     )
     current_date = datetime.datetime.now()
@@ -223,7 +223,7 @@ class TaskListView(PermissionRequiredMixin, ListView):
     context_object_name = "task_list"
 
     def get_queryset(self):
-        return Task.objects.filter(class_id=self.kwargs["pk"])
+        return Task.objects.filter(grade=self.kwargs["pk"])
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -239,7 +239,7 @@ class TaskCreateView(PermissionRequiredMixin, CreateView):
     def get_initial(self, *args, **kwargs):
         initial = super(TaskCreateView, self).get_initial(**kwargs)
         user = self.request.user
-        initial["class_id"] = self.kwargs["pk"]
+        initial["grade"] = self.kwargs["pk"]
         initial['teacher_id'] = user.teacher_set.get()
         return initial
 
@@ -262,7 +262,7 @@ class TaskDeleteView(PermissionRequiredMixin, DeleteView):
     template_name = "teacher_tasks_delete.html"
 
     def get_success_url(self):
-        return reverse("teacher_tasks", kwargs={"pk": self.object.class_id.id})
+        return reverse("teacher_tasks", kwargs={"pk": self.object.grade.id})
 
 @permission_required('school.add_student')
 def manager_interface(request):
@@ -339,8 +339,8 @@ def manager_choice(request):
 @permission_required('school.add_student')
 def manager_class(request, pk):
     chosen_class = get_object_or_404(Class, pk=pk)
-    chosen_class_total = Student.objects.filter(class_id=chosen_class).count()
-    chosen_class_queryset = Student.objects.filter(class_id=chosen_class)
+    chosen_class_total = Student.objects.filter(grade=chosen_class).count()
+    chosen_class_queryset = Student.objects.filter(grade=chosen_class)
     context = {
         "chosen_class": chosen_class,
         "chosen_class_total": chosen_class_total,
@@ -355,7 +355,7 @@ class StudentCreateView(PermissionRequiredMixin, CreateView):
 
     def get_initial(self, *args, **kwargs):
         initial = super(StudentCreateView, self).get_initial(**kwargs)
-        initial["class_id"] = Class.objects.all()[0]
+        initial["grade"] = Class.objects.all()[0]
         return initial
 
     def get_context_data(self, **kwargs):
@@ -370,12 +370,12 @@ class StudentDeleteView(PermissionRequiredMixin, DeleteView):
     context_object_name = "student"
 
     def get_success_url(self):
-        return reverse("manager_class", kwargs={"pk": self.object.class_id.id})
+        return reverse("manager_class", kwargs={"pk": self.object.grade.id})
 
 @permission_required('school.add_student')
 def manager_unrated(request, pk):
     student = get_object_or_404(Student, pk=pk)
-    tasks_queryset = Task.objects.filter(class_id=student.class_id).filter(
+    tasks_queryset = Task.objects.filter(grade=student.grade).filter(
         ~Q(mark__student_id=student)
     )
     current_date = datetime.datetime.now()
@@ -409,7 +409,7 @@ class TaskListManager(PermissionRequiredMixin, ListView):
     context_object_name = 'task_list'
 
     def get_queryset(self):
-        return Task.objects.filter(class_id=self.kwargs['pk'])
+        return Task.objects.filter(grade=self.kwargs['pk'])
 
     def get_context_data(self, *args, **kwargs):
         context = super(TaskListManager, self).get_context_data(*args, **kwargs)

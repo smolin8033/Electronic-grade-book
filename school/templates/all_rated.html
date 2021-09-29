@@ -2,11 +2,11 @@
 
 {% block content %}
 <h4>Student:{{student.get_full_name}}</h4>
-<h4>Class:{{student.class_id}}</h4>
+<h4>Class:{{student.grade}}</h4>
 <p>Birthday: {{student.birthday}}<br><br>
 Today is: {{current_date|date:"M. d, Y"}}
 </p>
-<form action="{% url 'class_students' pk=student.class_id.id %}">
+<form action="{% url 'class_students' pk=student.grade.id %}">
     <input type="submit" value="Go back to choose again" />
 </form>
 <center><p>The tasks are:</p></center>
