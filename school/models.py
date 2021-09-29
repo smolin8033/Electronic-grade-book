@@ -99,7 +99,7 @@ class Task(models.Model):
     grade = models.ForeignKey(Class, on_delete=models.CASCADE, default="")
     teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE, default="")
     commentary = models.TextField()
-    discipline_id = models.ForeignKey(Discipline, on_delete=models.CASCADE, default="")
+    discipline = models.ForeignKey(Discipline, on_delete=models.CASCADE, default="")
 
     def __str__(self):
         return self.task_name
