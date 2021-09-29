@@ -10,7 +10,7 @@ class MarkForm(forms.ModelForm):
 
     class Meta:
         model = Mark
-        exclude = ("student_id", "task_id")
+        exclude = ("student", "task_id")
         fields = [
             "final_score",
         ]

@@ -58,7 +58,7 @@ def logout_view(request):
 def student_unrated(request):
     student = get_object_or_404(Student, user=request.user)
     tasks_queryset = Task.objects.filter(grade=student.grade).filter(
-        ~Q(mark__student_id=student)
+        ~Q(mark__student=student)
     )
     current_date = datetime.datetime.now()
     if 'btnform2' in request.POST:
@@ -73,7 +73,7 @@ def student_unrated(request):
 @permission_required('school.view_mark')
 def student_rated(request):
     student = get_object_or_404(Student, user=request.user)
-    marks_queryset = Mark.objects.filter(student_id=student).order_by("task_id")
+    marks_queryset = Mark.objects.filter(student=student).order_by("task_id")
     current_date = datetime.datetime.now()
     if "btnform2" in request.POST:
         return redirect('student_unrated')
@@ -113,7 +113,7 @@ def class_students(request, pk):
 @permission_required('school.change_mark')
 def rated(request, pk):
     student = Student.objects.get(pk=pk)
-    marks_queryset = Mark.objects.filter(student_id=student).order_by("task_id")[:10]
+    marks_queryset = Mark.objects.filter(student=student).order_by("task_id")[:10]
     current_date = datetime.datetime.now()
     if "to_unrated_tasks" in request.POST:
         return redirect("teacher_unrated", pk=student.id)
@@ -129,7 +129,7 @@ def rated(request, pk):
 @permission_required('school.change_mark')
 def all_rated(request, pk):
     student = Student.objects.get(pk=pk)
-    marks_queryset = Mark.objects.filter(student_id=student).order_by("task_id")
+    marks_queryset = Mark.objects.filter(student=student).order_by("task_id")
     current_date = datetime.datetime.now()
     if "to_unrated_tasks" in request.POST:
         return redirect("teacher_unrated", pk=student.id)
@@ -146,7 +146,7 @@ def all_rated(request, pk):
 def teacher_unrated(request, pk):
     student = Student.objects.get(pk=pk)
     tasks_queryset = Task.objects.filter(grade=student.grade).filter(
-        ~Q(mark__student_id=student)
+        ~Q(mark__student=student)
     )[:10]
     current_date = datetime.datetime.now()
     if "to_rated_tasks" in request.POST:
@@ -164,7 +164,7 @@ def teacher_unrated(request, pk):
 def all_unrated(request, pk):
     student = Student.objects.get(pk=pk)
     tasks_queryset = Task.objects.filter(grade=student.grade).filter(
-        ~Q(mark__student_id=student)
+        ~Q(mark__student=student)
     )
     current_date = datetime.datetime.now()
     if "to_rated_tasks" in request.POST:
@@ -185,7 +185,7 @@ def mark_create_view(request, pk, rel_task):
     form = MarkForm(request.POST or None)
     if form.is_valid():
         mark = form.save(commit=False)
-        mark.student_id = student
+        mark.student = student
         mark.task_id = task
         mark.save()
         return redirect("teacher_unrated", pk=pk)
@@ -204,7 +204,7 @@ class MarkUpdateView(PermissionRequiredMixin, UpdateView):
     template_name = "mark_update.html"
 
     def get_success_url(self):
-        return reverse("rated", kwargs={"pk": self.object.student_id.id})
+        return reverse("rated", kwargs={"pk": self.object.student.id})
 
 class MarkDeleteView(PermissionRequiredMixin, DeleteView):
     permission_required = 'school.delete_mark'
@@ -214,7 +214,7 @@ class MarkDeleteView(PermissionRequiredMixin, DeleteView):
     template_name = "mark_delete.html"
 
     def get_success_url(self):
-        return reverse("rated", kwargs={"pk": self.object.student_id.id})
+        return reverse("rated", kwargs={"pk": self.object.student.id})
 
 class TaskListView(PermissionRequiredMixin, ListView):
     permission_required = 'school.change_task'
@@ -376,7 +376,7 @@ class StudentDeleteView(PermissionRequiredMixin, DeleteView):
 def manager_unrated(request, pk):
     student = get_object_or_404(Student, pk=pk)
     tasks_queryset = Task.objects.filter(grade=student.grade).filter(
-        ~Q(mark__student_id=student)
+        ~Q(mark__student=student)
     )
     current_date = datetime.datetime.now()
     if 'btnform2' in request.POST:
@@ -391,7 +391,7 @@ def manager_unrated(request, pk):
 @permission_required('school.add_student')
 def manager_rated(request, pk):
     student = get_object_or_404(Student, pk=pk)
-    marks_queryset = Mark.objects.filter(student_id=student).order_by("task_id")
+    marks_queryset = Mark.objects.filter(student=student).order_by("task_id")
     current_date = datetime.datetime.now()
     if "btnform2" in request.POST:
         return redirect('manager_unrated', pk=pk)

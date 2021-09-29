@@ -3,14 +3,14 @@
 {% block content %}
 <center>
 <p>The mark for: <br><br>
-Student: {{ mark.student_id.get_full_name }} <br><br>
+Student: {{ mark.student.get_full_name }} <br><br>
 Task: {{ mark.task_id }}</p>
 Change mark:
 <form action="." method="POST">{% csrf_token %}
 {{ form.as_p }}
 <input type="submit" value="Update"/>
 </form> <br>
-<form action="{% url 'rated' pk=mark.student_id.id %}">
+<form action="{% url 'rated' pk=mark.student.id %}">
     <input type="submit" value="Choose another task" />
 </form> <br>
 <form action="{% url 'mark_delete' pk=mark.id %}">
