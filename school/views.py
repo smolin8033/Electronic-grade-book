@@ -44,7 +44,7 @@ def login_view(request):
                     else:
                         return redirect('manager_interface')
             else:
-                return HttpResponse('Invalid login')
+                return HttpResponse('Please, enter valid login and password')
     else:
         form = LoginForm()
     return render(request, "login.html", {"form": form})
