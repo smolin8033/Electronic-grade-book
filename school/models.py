@@ -97,7 +97,7 @@ class Task(models.Model):
     start_date = models.DateTimeField()
     end_date = models.DateTimeField()
     grade = models.ForeignKey(Class, on_delete=models.CASCADE, default="")
-    teacher_id = models.ForeignKey(Teacher, on_delete=models.CASCADE, default="")
+    teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE, default="")
     commentary = models.TextField()
     discipline_id = models.ForeignKey(Discipline, on_delete=models.CASCADE, default="")
 
