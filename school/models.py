@@ -77,7 +77,7 @@ class Discipline(models.Model):
     name = models.CharField(max_length=40)
     type = models.CharField(max_length=40)
     grade = models.ForeignKey(Class, on_delete=models.CASCADE, default="")
-    teacher_id = models.ForeignKey(Teacher, on_delete=models.CASCADE, default="")
+    teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE, default="")
     hours = models.IntegerField()
     slug = models.SlugField(null=False, unique=True)
 
