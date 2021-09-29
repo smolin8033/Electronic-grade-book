@@ -112,7 +112,7 @@ class Task(models.Model):
 
 
 class Mark(models.Model):
-    student_id = models.ForeignKey(Student, on_delete=models.CASCADE, default="")
+    student = models.ForeignKey(Student, on_delete=models.CASCADE, default="")
     final_score = models.IntegerField()
     task_id = models.ForeignKey(Task, on_delete=models.CASCADE, default="")
 
