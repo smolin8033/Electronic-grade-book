@@ -240,7 +240,7 @@ class TaskCreateView(PermissionRequiredMixin, CreateView):
         initial = super(TaskCreateView, self).get_initial(**kwargs)
         user = self.request.user
         initial["grade"] = self.kwargs["pk"]
-        initial['teacher_id'] = user.teacher_set.get()
+        initial['teacher'] = user.teacher_set.get()
         return initial
 
     def get_context_data(self, **kwargs):

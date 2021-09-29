@@ -21,7 +21,7 @@ class TaskForm(forms.ModelForm):
         label="Choose a class",
         queryset=Class.objects.all()
     )
-    teacher_id = forms.ModelChoiceField(
+    teacher = forms.ModelChoiceField(
         label="Choose a teacher",
         queryset=Teacher.objects.all()
     )
@@ -44,7 +44,7 @@ class TaskForm(forms.ModelForm):
             "start_date",
             "end_date",
             "grade",
-            "teacher_id",
+            "teacher",
             "commentary",
             "discipline_id",
         ]
@@ -57,7 +57,7 @@ class DisciplineForm(forms.ModelForm):
     name = forms.CharField(max_length=40)
     type = forms.CharField(max_length=40)
     grade = forms.ModelChoiceField(label="Choose a class", queryset=Class.objects.all())
-    teacher_id = forms.ModelChoiceField(label="Choose a teacher", queryset=Teacher.objects.all())
+    teacher = forms.ModelChoiceField(label="Choose a teacher", queryset=Teacher.objects.all())
     hours = forms.IntegerField()
 
     class Meta:
@@ -66,7 +66,7 @@ class DisciplineForm(forms.ModelForm):
             "name",
             "type",
             "grade",
-            "teacher_id",
+            "teacher",
             "hours"
         ]
 

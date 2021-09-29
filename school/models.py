@@ -82,7 +82,7 @@ class Discipline(models.Model):
     slug = models.SlugField(null=False, unique=True)
 
     def save(self, *args, **kwargs):
-        self.slug = slugify("{obj.name}-of-{obj.teacher_id}".format(obj=self))
+        self.slug = slugify("{obj.name}-of-{obj.teacher}".format(obj=self))
         super(Discipline, self).save(*args, **kwargs)
 
     def __str__(self):
