@@ -35,7 +35,7 @@ class Student(models.Model):
     family_name = models.CharField(max_length=50)
     address = models.CharField(max_length=60)
     birthday = models.DateField()
-    class_id = models.ForeignKey(Class, on_delete=models.CASCADE, default="")
+    grade = models.ForeignKey(Class, on_delete=models.CASCADE, default="")
     user = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, on_delete=models.PROTECT)
 
     def get_full_name(self):
@@ -76,7 +76,7 @@ class Teacher(models.Model):
 class Discipline(models.Model):
     name = models.CharField(max_length=40)
     type = models.CharField(max_length=40)
-    class_id = models.ForeignKey(Class, on_delete=models.CASCADE, default="")
+    grade = models.ForeignKey(Class, on_delete=models.CASCADE, default="")
     teacher_id = models.ForeignKey(Teacher, on_delete=models.CASCADE, default="")
     hours = models.IntegerField()
     slug = models.SlugField(null=False, unique=True)
@@ -96,7 +96,7 @@ class Task(models.Model):
     task_name = models.CharField(max_length=100)
     start_date = models.DateTimeField()
     end_date = models.DateTimeField()
-    class_id = models.ForeignKey(Class, on_delete=models.CASCADE, default="")
+    grade = models.ForeignKey(Class, on_delete=models.CASCADE, default="")
     teacher_id = models.ForeignKey(Teacher, on_delete=models.CASCADE, default="")
     commentary = models.TextField()
     discipline_id = models.ForeignKey(Discipline, on_delete=models.CASCADE, default="")
