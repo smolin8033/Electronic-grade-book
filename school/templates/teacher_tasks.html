@@ -19,7 +19,7 @@
         <td>
             <a href="{% url 'tasks_update' pk=task.id %}">{{ task.task_name }}</a>
         </td>
-        <td>{{ task.discipline_id }}</td>
+        <td>{{ task.discipline }}</td>
         <td>{{ task.start_date|date:"N. d, Y" }}</td>
         <td>{{ task.end_date|date:"N. d, Y" }}</td>
     </tr>

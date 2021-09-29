@@ -25,7 +25,7 @@ class TaskForm(forms.ModelForm):
         label="Choose a teacher",
         queryset=Teacher.objects.all()
     )
-    discipline_id = forms.ModelChoiceField(
+    discipline = forms.ModelChoiceField(
         label="Choose a discipline",
         queryset=Discipline.objects.all()
     )
@@ -46,7 +46,7 @@ class TaskForm(forms.ModelForm):
             "grade",
             "teacher",
             "commentary",
-            "discipline_id",
+            "discipline",
         ]
         widgets = {
             "start_date": DateInput(),
