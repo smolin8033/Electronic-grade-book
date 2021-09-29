@@ -73,7 +73,7 @@ def student_unrated(request):
 @permission_required('school.view_mark')
 def student_rated(request):
     student = get_object_or_404(Student, user=request.user)
-    marks_queryset = Mark.objects.filter(student=student).order_by("task_id")
+    marks_queryset = Mark.objects.filter(student=student).order_by("task")
     current_date = datetime.datetime.now()
     if "btnform2" in request.POST:
         return redirect('student_unrated')
@@ -113,7 +113,7 @@ def class_students(request, pk):
 @permission_required('school.change_mark')
 def rated(request, pk):
     student = Student.objects.get(pk=pk)
-    marks_queryset = Mark.objects.filter(student=student).order_by("task_id")[:10]
+    marks_queryset = Mark.objects.filter(student=student).order_by("task")[:10]
     current_date = datetime.datetime.now()
     if "to_unrated_tasks" in request.POST:
         return redirect("teacher_unrated", pk=student.id)
@@ -129,7 +129,7 @@ def rated(request, pk):
 @permission_required('school.change_mark')
 def all_rated(request, pk):
     student = Student.objects.get(pk=pk)
-    marks_queryset = Mark.objects.filter(student=student).order_by("task_id")
+    marks_queryset = Mark.objects.filter(student=student).order_by("task")
     current_date = datetime.datetime.now()
     if "to_unrated_tasks" in request.POST:
         return redirect("teacher_unrated", pk=student.id)
@@ -186,7 +186,7 @@ def mark_create_view(request, pk, rel_task):
     if form.is_valid():
         mark = form.save(commit=False)
         mark.student = student
-        mark.task_id = task
+        mark.task = task
         mark.save()
         return redirect("teacher_unrated", pk=pk)
     context = {
@@ -391,7 +391,7 @@ def manager_unrated(request, pk):
 @permission_required('school.add_student')
 def manager_rated(request, pk):
     student = get_object_or_404(Student, pk=pk)
-    marks_queryset = Mark.objects.filter(student=student).order_by("task_id")
+    marks_queryset = Mark.objects.filter(student=student).order_by("task")
     current_date = datetime.datetime.now()
     if "btnform2" in request.POST:
         return redirect('manager_unrated', pk=pk)

@@ -22,10 +22,10 @@ Today is: {{current_date|date:"M. d, Y"}}
     {% for mark in marks_queryset %}
     <tr>
         <td>{{ forloop.counter }}</td>
-        <td>{{ mark.task_id.task_name }}</td>
-        <td>{{ mark.task_id.discipline }}</td>
-        <td>{{ mark.task_id.start_date|date:"N. d, Y" }}</td>
-        <td>{{ mark.task_id.end_date|date:"N. d, Y" }}</td>
+        <td>{{ mark.task.task_name }}</td>
+        <td>{{ mark.task.discipline }}</td>
+        <td>{{ mark.task.start_date|date:"N. d, Y" }}</td>
+        <td>{{ mark.task.end_date|date:"N. d, Y" }}</td>
         <td>
             <a href="{% url 'mark_update' pk=mark.id %}">{{ mark }}</a>
         </td>

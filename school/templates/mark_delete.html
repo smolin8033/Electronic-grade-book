@@ -4,7 +4,7 @@
 <center>
 <form action="." method="POST">{% csrf_token %}
     <p>Are you sure you want to delete the mark: {{ mark }} <br><br>
-    To the task: {{ mark.task_id }}?</p>
+    To the task: {{ mark.task }}?</p>
 <input type="submit" value="Delete" />
 </form> <br>
 <form action="{% url 'mark_update' pk=mark.id %}">

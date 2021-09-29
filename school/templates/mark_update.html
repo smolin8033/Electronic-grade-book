@@ -4,7 +4,7 @@
 <center>
 <p>The mark for: <br><br>
 Student: {{ mark.student.get_full_name }} <br><br>
-Task: {{ mark.task_id }}</p>
+Task: {{ mark.task }}</p>
 Change mark:
 <form action="." method="POST">{% csrf_token %}
 {{ form.as_p }}
