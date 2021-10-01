@@ -115,4 +115,4 @@ Then your can start your django server:
 Open the localhost in your browser to view the website. Now you can create a superuser (admin):
 
     python manage.py createsuperuser
-Follow the instructions to create. When superuser is created, enter his/her login and password to enter the admin page. There, you can create users and give them permissions, so that new users (students, teacher and managers) also could log in to the website.
+Follow the instructions to create. When superuser is created, enter his/her login and password to enter the admin page. There, you can create groups: 'student', 'teacher' and 'manager' and assign group permissions, so that new users (students, teacher and managers) also could log in to the website.
